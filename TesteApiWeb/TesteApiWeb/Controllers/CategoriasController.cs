@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DTOS.Categoria;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.RegularExpressions;
 using TesteApiWeb.Class;
 using TesteApiWeb.Context;
-using TesteApiWeb.Models;
 using TesteApiWeb.Services;
+using static DTOS.Categoria.CategoriaDTO;
 
 namespace TesteApiWeb.Controllers
 {
-    [Route("/api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CategoriasController : ControllerPersonalizado
     {
@@ -19,15 +21,15 @@ namespace TesteApiWeb.Controllers
         public CategoriasController(CategoriaService categoriaService) {_categoriaService = categoriaService;  }
 
         [HttpGet]
-        public IActionResult ObterCategorias() => RespostaCustomizada(_categoriaService.ListarCategorias());
+        public async Task<IActionResult> ObterCategoriasAsync() => RespostaCustomizada(await _categoriaService.ListarCategoriasAsync());
 
         [HttpGet("{id}")]
-        public IActionResult ObterCategoriaPorId(int id) => RespostaCustomizada(_categoriaService.ProcurarCategoria(id));
+        public async Task<IActionResult> ObterCategoriaPorId(int id) => RespostaCustomizada(await _categoriaService.ProcurarCategoriaAsync(id));
 
         [HttpPost]
-        public IActionResult AdicionarCategoria(CategoriaDTO categoriaDTO) 
+        public async Task<IActionResult> AdicionarCategoriaAsync(CategoriaCreateDTO categoriaDTO) 
         {
-            var result = _categoriaService.CriarCategoria(categoriaDTO);
+            var result = await _categoriaService.CriarCategoriaAsync(categoriaDTO);
 
             if (result.Sucesso)
             {
@@ -39,10 +41,10 @@ namespace TesteApiWeb.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult EditarCategoria(int id, CategoriaDTO categoriaDTO) => RespostaCustomizada(_categoriaService.EditarCategoria(id, categoriaDTO));
+        public async Task<IActionResult> EditarCategoriaAsync(int id, CategoriaUpdateDTO categoriaDTO) => RespostaCustomizada(await _categoriaService.EditarCategoriaAsync(id, categoriaDTO));
 
         [HttpDelete("{id}")]
-        public IActionResult ExcluirCategoria(int id) => RespostaCustomizada(_categoriaService.ApagarCategoria(id));
+        public async Task<IActionResult> ExcluirCategoriaAsync(int id) => RespostaCustomizada(await _categoriaService.ApagarCategoriaAsync(id));
             
     }
 }

@@ -1,7 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DTOS.Categoria;
+using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 using TesteApiWeb.Class;
 using TesteApiWeb.Context;
 using TesteApiWeb.Models;
+using static DTOS.Categoria.CategoriaDTO;
 
 namespace TesteApiWeb.Services
 {
@@ -14,78 +17,118 @@ namespace TesteApiWeb.Services
             _context = context;
         }
 
-        public ServiceResult<IEnumerable<CategoriaDTO>> ListarCategorias()
+        public async Task<ServiceResult<IEnumerable<CategoriaResponseDTO>>> ListarCategoriasAsync()
         {
-            var categorias = _context.Categorias
+            var categorias = await _context.Categorias
                 .AsNoTracking()
-                .Select(c => new CategoriaDTO
+                .Select(c => new CategoriaResponseDTO
                 {
                     CategoriaId = c.CategoriaId,
                     Nome = c.Nome,
                 })
-                .ToList();
+                .ToListAsync();
 
             if (!categorias.Any())
-                return Result<IEnumerable<CategoriaDTO>>(false, NaoEncontrado, null, ResultType.NotFound);
+                return Result<IEnumerable<CategoriaResponseDTO>>(false, NaoEncontrado, null, ResultType.NotFound);
 
-            return Result<IEnumerable<CategoriaDTO>>(true, EncontradasSucesso, categorias, ResultType.Sucesso);
+            return Result<IEnumerable<CategoriaResponseDTO>>(true, EncontradasSucesso, categorias, ResultType.Sucesso);
         }
 
-        public ServiceResult<CategoriaDTO> CriarCategoria(CategoriaDTO categoriaDto)
+        public async Task<ServiceResult<CategoriaResponseDTO>> CriarCategoriaAsync(CategoriaCreateDTO categoriaDto)
         {
             var nomeFormatado = PadronizarNome(categoriaDto.Nome);
 
-            if (_context.Categorias.AsNoTracking().Any(c => c.Nome == nomeFormatado))
-                return Result<CategoriaDTO>(false, JaExisteEsseNome, null, ResultType.Conflito);
+            var categoriaExiste = await _context.Categorias.AsNoTracking().AnyAsync(c => c.Nome == nomeFormatado);
+
+            if (categoriaExiste)
+                return Result<CategoriaResponseDTO>(false, JaExisteEsseNome, null, ResultType.Conflito);
 
             var novaCategoria = new Categoria { Nome = nomeFormatado };
 
-            _context.Categorias.Add(novaCategoria);
-            _context.SaveChanges();
+            try
+            {
+                _context.Categorias.Add(novaCategoria);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return Result<CategoriaResponseDTO>(
+                    false,
+                    ErroAoSalvar + "Db erro: " + ex,
+                    null,
+                    ResultType.Erro
+                );
+            }
 
-            var resultadoDto = MapToDTO(novaCategoria);
+            var resultadoDto = new CategoriaResponseDTO
+            {
+                CategoriaId = novaCategoria.CategoriaId,
+                Nome = nomeFormatado,
+            };
 
             return Result(true, AdicionadoSucesso, resultadoDto, ResultType.Criado);
         }
 
-        public ServiceResult<CategoriaDTO> EditarCategoria(int id, CategoriaDTO categoriaDTO)
+        public async Task<ServiceResult<CategoriaResponseDTO>> EditarCategoriaAsync(int id, CategoriaUpdateDTO categoriaDTO)
         {
-            var categoriaBanco = _context.Categorias.Find(id);
-            if (categoriaBanco == null)
-                return Result<CategoriaDTO>(false, NaoEncontrado, null, ResultType.NotFound);
+            var categoriaBanco = await _context.Categorias.FindAsync(id);
 
-            if (categoriaDTO.CategoriaId != id)
-                return Result<CategoriaDTO>(false, IdDiferente, null, ResultType.Conflito);
+            if (categoriaBanco == null)
+                return Result<CategoriaResponseDTO>(false, NaoEncontrado, null, ResultType.NotFound);
 
             var nomeFormatado = PadronizarNome(categoriaDTO.Nome);
 
-            if (_context.Categorias.Any(c => c.Nome == nomeFormatado && c.CategoriaId != id))
-                return Result<CategoriaDTO>(false, JaExisteEsseNome, null, ResultType.Conflito);
+            var categoriaExiste = await _context.Categorias
+                .AsNoTracking()
+                .AnyAsync(c => c.Nome == nomeFormatado && c.CategoriaId != id);
 
-            categoriaBanco.Nome = nomeFormatado;
-            _context.SaveChanges();
+            if (categoriaExiste)
+                return Result<CategoriaResponseDTO>(false, JaExisteEsseNome, null, ResultType.Conflito);
 
-            var resultadoDto = MapToDTO(categoriaBanco);
+            try
+            {
+                categoriaBanco.Nome = nomeFormatado;
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return Result<CategoriaResponseDTO>(
+                    false,
+                    ErroAoEditar + "Db erro: " + ex,
+                    null,
+                    ResultType.Erro
+                );
+            }
+
+            var resultadoDto = new CategoriaResponseDTO
+            {
+                CategoriaId = id,
+                Nome = nomeFormatado,
+            };
 
             return Result(true, AtualizadoSucesso, resultadoDto, ResultType.Sucesso);
         }
 
-        public ServiceResult<CategoriaDTO> ProcurarCategoria(int id)
+        public async Task<ServiceResult<CategoriaResponseDTO>> ProcurarCategoriaAsync(int id)
         {
-            var categoria = _context.Categorias.AsNoTracking().FirstOrDefault(c => c.CategoriaId == id);
+            var categoria = await _context.Categorias.AsNoTracking().FirstOrDefaultAsync(c => c.CategoriaId == id);
 
             if (categoria == null)
-                return Result<CategoriaDTO>(false, NaoEncontrado, null, ResultType.NotFound);
+                return Result<CategoriaResponseDTO>(false, NaoEncontrado, null, ResultType.NotFound);
 
-            var resultadoDto = MapToDTO(categoria);
+            var resultadoDto = new CategoriaResponseDTO
+            {
+                CategoriaId = id,
+                Nome = categoria.Nome,
+            };
 
             return Result(true, EncontradasSucesso, resultadoDto, ResultType.Sucesso);
         }
 
 
-        public ServiceResult<bool> ApagarCategoria(int id)
+        public async Task<ServiceResult<bool>> ApagarCategoriaAsync(int id)
         {
-            var categoriaBanco = _context.Categorias.Include(c => c.Livros).FirstOrDefault(c => c.CategoriaId == id);
+            var categoriaBanco = await _context.Categorias.Include(c => c.Livros).FirstOrDefaultAsync(c => c.CategoriaId == id);
 
             if (categoriaBanco == null)
                 return Result<bool>(false, NaoEncontrado, false, ResultType.NotFound);
@@ -93,20 +136,25 @@ namespace TesteApiWeb.Services
             if (categoriaBanco.Livros != null && categoriaBanco.Livros.Any())
                 return Result<bool>(false, RegistrosVinculados, false, ResultType.Conflito);
 
-            _context.Categorias.Remove(categoriaBanco);
-            _context.SaveChanges();
+
+            try
+            {
+                _context.Categorias.Remove(categoriaBanco);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return Result<bool>(
+                    false,
+                    ErroAoApagar + "Db erro: " + ex,
+                    false,
+                    ResultType.Erro
+                );
+            }
 
             return Result<bool>(true, ExcluidoSucesso, true, ResultType.Sucesso);
 
 
-        }
-        private CategoriaDTO MapToDTO(Categoria categoria)
-        {
-            return new CategoriaDTO
-            {
-                CategoriaId = categoria.CategoriaId,
-                Nome = categoria.Nome
-            };
         }
     }
 }

@@ -20,6 +20,7 @@ namespace TesteApiWeb.Class
                 ResultType.NotFound => NotFound(new { erro = resultado.Mensagem }),
                 ResultType.Conflito => Conflict(new { erro = resultado.Mensagem }),
                 ResultType.Invalido => BadRequest(new { erro = resultado.Mensagem }),
+                ResultType.Erro => StatusCode(500, new { erro = resultado.Mensagem }),
                 _ => BadRequest(new { erro = resultado.Mensagem })
             };
         }

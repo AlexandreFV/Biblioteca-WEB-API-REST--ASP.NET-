@@ -17,7 +17,7 @@ namespace TesteApiWeb.Models
         //public DateTime DataCriacao { get; set; }
         //public int IdUsuarioCriacao { get; set; }
         public ICollection<Categoria>? Categorias { get; set; }
-        public String Ativo { get; set; } = string.Empty;
+        public bool Ativo { get; set; }
 
     }
 }

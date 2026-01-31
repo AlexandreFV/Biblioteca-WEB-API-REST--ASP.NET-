@@ -15,5 +15,5 @@
             new() { Sucesso = false, Mensagem = mensagem, Tipo = tipo };
     }
 
-    public enum ResultType { Sucesso, Criado, Atualizado, NotFound, Invalido, Conflito }
+    public enum ResultType { Sucesso, Criado, Atualizado, NotFound, Invalido, Conflito, NaoAutorizado, Erro }
 }

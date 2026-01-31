@@ -1,19 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace TesteApiWeb.Models
 {
-    public class Usuario
+    public class Usuario : IdentityUser
     {
-
-        [Key]
-        public int UsuarioId { get; set; }
-
-        public String Nome { get; set; } = String.Empty;
-
-        public String Senha { get; set; } = String.Empty;
-
-        public String Tipo { get; set; } = String.Empty;
-        public String Ativo { get; set; } = string.Empty;
+        public string Nome { get; set; } = string.Empty;
+        public bool Ativo { get; set; } = true;
 
     }
 }

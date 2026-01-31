@@ -1,112 +1,113 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DTOS.Usuario;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using TesteApiWeb.Class;
 using TesteApiWeb.Context;
 using TesteApiWeb.Models;
+using static DTOS.Usuario.UsuarioDTO;
 
 namespace TesteApiWeb.Services
 {
     public class UsuarioService : ServicePersonalizado<Usuario>
     {
 
-        private readonly AppDBContextSistema _context;
+        private readonly UserManager<Usuario> _userManager;
 
-        public UsuarioService(AppDBContextSistema context){_context = context;}
+        public UsuarioService(UserManager<Usuario> userManager) {_userManager = userManager;}
 
 
-        public ServiceResult<IEnumerable<UsuarioDTO>> ListarUsuarios()
+        public async Task<ServiceResult<IEnumerable<UsuarioDTOResponse>>> ListarUsuariosAsync()
         {
-            var usuarios = _context.Usuarios.AsNoTracking()
-                .Select(u => new UsuarioDTO
+            var usuarios = await _userManager.Users.AsNoTracking()
+                .Select(u => new UsuarioDTOResponse
                 {
-                    UsuarioId = u.UsuarioId,
+                    UsuarioId = u.Id,
                     Nome = u.Nome,
-                    Senha = u.Senha, /*TODO FUTURAMENTE TEM QUE CONVERTER A SENHA PARA UM HASH OU ALGO DO GENERO*/
-                    Tipo = u.Tipo,
-                }).ToList();
+                    Ativo = u.Ativo,
+                }).ToListAsync();
 
             if(!usuarios.Any())
-                return Result<IEnumerable<UsuarioDTO>>(false, NaoEncontrado, null, ResultType.NotFound);
+                return Result<IEnumerable<UsuarioDTOResponse>>(false, NaoEncontrado, null, ResultType.NotFound);
 
-            return Result<IEnumerable<UsuarioDTO>>(true, EncontradasSucesso, usuarios, ResultType.Sucesso);
+            return Result<IEnumerable<UsuarioDTOResponse>>(true, EncontradasSucesso, usuarios, ResultType.Sucesso);
 
         }
 
-        public ServiceResult<UsuarioDTO> CriarUsuario(UsuarioDTO usuarioDTO)
+        public async Task<ServiceResult<UsuarioDTOResponse>> EditarUsuarioAsync(string id, UsuarioDTOEdit usuarioDTO)
         {
-            var nomeFormatado = PadronizarNome(usuarioDTO.Nome);
-
-            var tipoFormatado = PadronizarNome(usuarioDTO.Tipo);
-
-            var usuarioEntity = new Usuario { Nome = usuarioDTO.Nome, Tipo = usuarioDTO.Tipo, Senha = usuarioDTO.Senha };
-
-            _context.Usuarios.Add(usuarioEntity);
-            _context.SaveChanges();
-
-            var usuarioDTOBanco = EntityToDTO(usuarioEntity);
-
-            return Result(true, AdicionadoSucesso, usuarioDTOBanco, ResultType.Criado);
-        }
-
-
-        public ServiceResult<UsuarioDTO> EditarUsuario(int id, UsuarioDTO usuarioDTO)
-        {
-            var usuarioBancoProcurar = _context.Usuarios.Find(id);
+            var usuarioBancoProcurar = await _userManager.FindByIdAsync(id);
 
             if (usuarioBancoProcurar == null)
-                return Result<UsuarioDTO>(false, NaoEncontrado, null, ResultType.NotFound);
-
-            if (usuarioDTO.UsuarioId != id)
-                return Result<UsuarioDTO>(false, IdDiferente, null, ResultType.Invalido);
+                return Result<UsuarioDTOResponse>(false, NaoEncontrado, null, ResultType.NotFound);
 
             usuarioBancoProcurar.Nome = PadronizarNome(usuarioDTO.Nome);
-            usuarioBancoProcurar.Tipo = PadronizarNome(usuarioDTO.Tipo);
-            usuarioBancoProcurar.Senha = usuarioDTO.Senha;
-            _context.SaveChanges();
+            usuarioBancoProcurar.Ativo = usuarioDTO.Ativo;
+           
+            var result = await _userManager.UpdateAsync(usuarioBancoProcurar);
 
-            var novoUsuarioDTO = EntityToDTO(usuarioBancoProcurar);
+            if (!result.Succeeded)
+                return Result<UsuarioDTOResponse>(
+                    false,
+                    string.Join(", ", result.Errors.Select(e => e.Description)),
+                    null,
+                    ResultType.Invalido
+                );
 
-            return Result(true, AtualizadoSucesso, novoUsuarioDTO, ResultType.Atualizado);
+            var novoUsuarioExibir = new UsuarioDTOResponse
+            {
+                Nome = usuarioBancoProcurar.Nome,
+                Ativo = true,
+                UsuarioId = usuarioBancoProcurar.Id,
+            };
+
+
+            return Result<UsuarioDTOResponse>(true, AtualizadoSucesso, novoUsuarioExibir, ResultType.Atualizado);
         }
 
-        public ServiceResult<UsuarioDTO> ProcurarUsuario(int id)
+        public async Task<ServiceResult<UsuarioDTOResponse>> ProcurarUsuarioAsync(string id)
         {
-            var usuarioBancoProcurar = _context.Usuarios.AsNoTracking().FirstOrDefault(u => u.UsuarioId == id);
+            var usuarioBancoProcurar = await _userManager.FindByIdAsync(id);
 
             if (usuarioBancoProcurar == null)
-                return Result<UsuarioDTO>(false, NaoEncontrado, null, ResultType.NotFound);
+                return Result<UsuarioDTOResponse>(false, NaoEncontrado, null, ResultType.NotFound);
 
-            var novoUsuarioDTO = EntityToDTO(usuarioBancoProcurar);
 
-            return Result(true, EncontradasSucesso, novoUsuarioDTO, ResultType.Sucesso);
+            var novoUsuarioExibir = new UsuarioDTOResponse
+            {
+                Nome = usuarioBancoProcurar.Nome,
+                Ativo = true,
+                UsuarioId = usuarioBancoProcurar.Id,
+            };
+
+            return Result(true, EncontradasSucesso, novoUsuarioExibir, ResultType.Sucesso);
 
         }
 
-        public ServiceResult<bool> ApagarUsuario(int id)
+        public async Task<ServiceResult<bool>> ApagarUsuarioAsync(string id)
         {
 
-            var usuarioBancoProcurar = _context.Usuarios.AsNoTracking().FirstOrDefault(u => u.UsuarioId == id);
+            var usuarioBancoProcurar = await _userManager.FindByIdAsync(id);
 
             if (usuarioBancoProcurar == null)
                 return Result<bool>(false, NaoEncontrado, false, ResultType.NotFound);
 
             /*TODO
-             CASO USUARIO TIVER UM LIVRO VINCULADO ELE N PODE SER EXCLUIDO*/
+             CASO USUARIO TIVER UM EMPRESTIMO ATIVO VINCULADO ELE N PODE SER EXCLUIDO*/
+               
+            usuarioBancoProcurar.Ativo = false;
 
-            _context.Usuarios.Remove(usuarioBancoProcurar);
-            _context.SaveChanges();
+            var result = await _userManager.UpdateAsync(usuarioBancoProcurar);
+
+            if (!result.Succeeded)
+                return Result<bool>(
+                    false,
+                    string.Join(", ", result.Errors.Select(e => e.Description)),
+                    false,
+                    ResultType.Invalido
+                );
 
             return Result<bool>(true, ExcluidoSucesso, true, ResultType.Sucesso);
 
-        }
-        private UsuarioDTO EntityToDTO(Usuario usuarioEntity)
-        {
-            return new UsuarioDTO
-            {
-                UsuarioId = usuarioEntity.UsuarioId,
-                Nome = usuarioEntity.Nome,
-                Tipo = usuarioEntity.Tipo,
-                Senha = usuarioEntity.Senha,
-            };
         }
     }
 }

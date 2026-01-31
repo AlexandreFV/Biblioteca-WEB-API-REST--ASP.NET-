@@ -16,7 +16,7 @@ namespace TesteApiWeb.Models
         //public int IdUsuarioCriacao { get; set; }
 
         public ICollection<Livro>? Livros { get; set; } = new Collection<Livro>();
-        public String Ativo { get; set; } = string.Empty;
+        public bool Ativo { get; set; }
 
     }
 }

@@ -13,6 +13,11 @@
         protected string IdDiferente => $"O ID do(a) {NomeEntidade} no corpo é diferente do ID da URL";
         protected string RegistrosVinculados => $"Não é possível excluir: existem registros vinculados a esta {NomeEntidade}.";
         protected string ExcluidoSucesso => $"{NomeEntidade} excluido com sucesso.";
+        protected string JaExisteEsseEmail => $"Já possui um(a) {NomeEntidade} com esse e-mail";
+        protected string UsuarioOuSenhaInvalidos => $"O Usuario ou senha está incorreto!";
+        protected string ErroAoSalvar => $"Não foi possivel salvar o(a) {NomeEntidade}!";
+        protected string ErroAoEditar => $"Não foi possivel editar o(a) {NomeEntidade}!";
+        protected string ErroAoApagar => $"Não foi possivel apagar o(a) {NomeEntidade}!";
 
         protected string PadronizarNome(string nome)
         {

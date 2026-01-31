@@ -1,0 +1,9 @@
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\Biblioteca WEB API REST (ASP.NET).csproj.AssemblyReference.cache
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\Biblioteca WEB API REST (ASP.NET).GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\Biblioteca WEB API REST (ASP.NET).AssemblyInfoInputs.cache
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\Biblioteca WEB API REST (ASP.NET).AssemblyInfo.cs
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\Biblioteca WEB API REST (ASP.NET).csproj.CoreCompileInputs.cache
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\Biblioteca WEB API REST (ASP.NET).MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\Biblioteca WEB API REST (ASP.NET).MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net10.0\Biblioteca WEB API REST (ASP.NET).sourcelink.json

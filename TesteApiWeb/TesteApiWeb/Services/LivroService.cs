@@ -1,10 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DTOS.Categoria;
+using DTOS.Livro;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
+using System.Data.Common;
 using System.Linq;
 using TesteApiWeb.Class;
 using TesteApiWeb.Context;
-using TesteApiWeb.DTOS;
 using TesteApiWeb.Models;
+using static DTOS.Categoria.CategoriaDTO;
+using static DTOS.Livro.LivroDTO;
 
 namespace TesteApiWeb.Services
 {
@@ -15,42 +19,44 @@ namespace TesteApiWeb.Services
 
         public LivroService(AppDBContextSistema context) { _context = context; }
 
-        public ServiceResult<IEnumerable<LivroDTOGetGetId>> ListarLivros()
+        public async Task<ServiceResult<IEnumerable<LivroResponseDTO>>> ListarLivrosAsync()
         {
-            var todosLivros = _context.Livros.Include(l => l.Categorias).AsNoTracking().
-                Select(l => new LivroDTOGetGetId
+            var todosLivros = await _context.Livros.Include(l => l.Categorias).AsNoTracking().
+                Select(l => new LivroResponseDTO
                 {
                     LivroId = l.LivroId,
                     Nome = l.Nome,
                     Quantidade = l.Quantidade,
-                    Categorias = l.Categorias!.Select(c => new CategoriaDTO
+                    Categorias = l.Categorias!.Select(c => new CategoriaResponseDTO
                     {
                         CategoriaId = c.CategoriaId,
                         Nome = c.Nome,
                     }).ToList()
                 })
-                .ToList();
+                .ToListAsync();
 
             if (!todosLivros.Any())
-                return Result<IEnumerable<LivroDTOGetGetId>>(false, NaoEncontrado, null, ResultType.NotFound);
+                return Result<IEnumerable<LivroResponseDTO>>(false, NaoEncontrado, null, ResultType.NotFound);
 
-            return Result<IEnumerable<LivroDTOGetGetId>>(true, EncontradasSucesso, todosLivros, ResultType.Sucesso);
+            return Result<IEnumerable<LivroResponseDTO>>(true, EncontradasSucesso, todosLivros, ResultType.Sucesso);
 
         }
 
-        public ServiceResult<LivroDTOCreateEdit> CriarLivro(LivroDTOCreateEdit livroDTO)
+        public async Task<ServiceResult<LivroResponseDTO>> CriarLivroAsync(LivroCreateDTO livroDTO)
         {
             var nomeFormatado = PadronizarNome(livroDTO.Nome);
 
-            if (_context.Livros.AsNoTracking().Any(l => l.Nome == nomeFormatado))
-                return Result<LivroDTOCreateEdit>(false, JaExisteEsseNome, null, ResultType.Conflito);
+            if (await _context.Livros.AsNoTracking().AnyAsync(l => l.Nome == nomeFormatado))
+                return Result<LivroResponseDTO>(false, JaExisteEsseNome, null, ResultType.Conflito);
 
-            var idsCategorias = livroDTO.CategoriasIds ?? new List<int>();
+            var idsCategorias = livroDTO.CategoriasId ?? new List<int>();
 
-            var categoriasSelecionadas = _context.Categorias.Where(c => idsCategorias.Contains(c.CategoriaId)).ToList();
+            var categoriasSelecionadas = await _context.Categorias
+                .Where(c => idsCategorias.Contains(c.CategoriaId))
+                .ToListAsync();
 
             if (idsCategorias.Count != categoriasSelecionadas.Count)
-                return Result<LivroDTOCreateEdit>(false, "Uma ou mais categorias informadas não foram encontradas.", null, ResultType.NotFound);
+                return Result<LivroResponseDTO>(false, "Uma ou mais categorias informadas não foram encontradas.", null, ResultType.NotFound);
 
             var novoLivroEntity = new Livro
             {
@@ -59,62 +65,116 @@ namespace TesteApiWeb.Services
                 Categorias = categoriasSelecionadas,
             };
 
-            _context.Livros.Add(novoLivroEntity);
-            _context.SaveChanges();
 
-            var livroDTOBanco = EntityToEditDTO(novoLivroEntity);
+            try
+            {
+                _context.Livros.Add(novoLivroEntity);
+                await _context.SaveChangesAsync();
 
-            return Result<LivroDTOCreateEdit>(true, AdicionadoSucesso, livroDTOBanco, ResultType.Criado);
+            }
+            catch (DbUpdateException ex)
+            {
+                return Result<LivroResponseDTO>(
+                    false,
+                    ErroAoSalvar + "Db Erro: " + ex,
+                    null,
+                    ResultType.Erro
+                );
+
+            }
+
+            var result = new LivroResponseDTO
+            {
+                LivroId = novoLivroEntity.LivroId,
+                Nome = novoLivroEntity.Nome,
+                Quantidade = novoLivroEntity.Quantidade,
+                Categorias = categoriasSelecionadas.Select(c => new CategoriaResponseDTO
+                {
+                    CategoriaId = c.CategoriaId,
+                    Nome = c.Nome
+                }).ToList()
+            };
+
+            return Result<LivroResponseDTO>(true, AdicionadoSucesso, result, ResultType.Criado);
 
         }
 
-        public ServiceResult<LivroDTOCreateEdit> EditarLivro(int id, LivroDTOCreateEdit livroDTO)
+        public async Task<ServiceResult<LivroResponseDTO>> EditarLivroAsync(int id, LivroEditDTO livroDTO)
         {
-            var livroProcurado = _context.Livros.Include(l => l.Categorias).FirstOrDefault(l => l.LivroId == id);
+            var livroProcurado = await _context.Livros.Include(l => l.Categorias).FirstOrDefaultAsync(l => l.LivroId == id);
 
             if (livroProcurado == null)
-                return Result<LivroDTOCreateEdit>(false, NaoEncontrado, null, ResultType.NotFound);
-
-            if(livroProcurado.LivroId != livroDTO.LivroId)
-                return Result<LivroDTOCreateEdit>(false, IdDiferente, null, ResultType.Invalido);
+                return Result<LivroResponseDTO>(false, NaoEncontrado, null, ResultType.NotFound);
 
             livroProcurado.Nome = PadronizarNome(livroDTO.Nome);
             livroProcurado.Quantidade = livroDTO.Quantidade;
 
-            var ids = livroDTO.CategoriasIds ?? new List<int>();
-            var novasCategorias = _context.Categorias
+            var ids = livroDTO.CategoriasId ?? new List<int>();
+            var novasCategorias = await _context.Categorias
                 .Where(c => ids.Contains(c.CategoriaId))
-                .ToList();
+                .ToListAsync();
 
-            livroProcurado.Categorias = novasCategorias;
-            _context.SaveChanges();
+            try
+            {
+                livroProcurado.Categorias = novasCategorias;
+                await _context.SaveChangesAsync();
 
-            var livroDTOResult = EntityToEditDTO(livroProcurado);
+            }
+            catch (DbUpdateException ex)
+            {
+                return Result<LivroResponseDTO>(
+                    false,
+                    ErroAoEditar + "Db Erro: " + ex,
+                    null,
+                    ResultType.Erro
+                );
+            }
 
-            return Result(true, AtualizadoSucesso, livroDTOResult, ResultType.Sucesso);
+            var result = new LivroResponseDTO
+            {
+                LivroId = livroProcurado.LivroId,
+                Nome = livroProcurado.Nome,
+                Quantidade = livroProcurado.Quantidade,
+                Categorias = livroProcurado.Categorias!.Select(c => new CategoriaResponseDTO
+                {
+                    CategoriaId = c.CategoriaId,
+                    Nome = c.Nome,
+                }).ToList()
+            };
+
+            return Result(true, AtualizadoSucesso, result, ResultType.Sucesso);
 
         }
 
-        public ServiceResult<LivroDTOGetGetId> ProcurarLivroPorId(int id)
+        public async Task<ServiceResult<LivroResponseDTO>> ProcurarLivroPorIdAsync(int id)
         {
-            var livroBanco = _context.Livros
+            var livroBanco = await _context.Livros
                     .Include(l => l.Categorias)
                     .AsNoTracking()
-                    .FirstOrDefault(l => l.LivroId == id);
+                    .FirstOrDefaultAsync(l => l.LivroId == id);
 
             if (livroBanco == null)
-                return Result<LivroDTOGetGetId>(false, NaoEncontrado, null, ResultType.NotFound);
+                return Result<LivroResponseDTO>(false, NaoEncontrado, null, ResultType.NotFound);
 
+            var livroDTO = new LivroResponseDTO
+            {
+                Nome = livroBanco.Nome,
+                Quantidade = livroBanco.Quantidade,
+                LivroId = livroBanco.LivroId,
+                Categorias = livroBanco.Categorias!.Select(c => new CategoriaResponseDTO
+                {
+                    Nome = c.Nome,
+                    CategoriaId = c.CategoriaId,
+                }).ToList(),
+            };
 
-            var livroDTO = EntityToGetDTO(livroBanco);
-
-            return Result<LivroDTOGetGetId>(true, EncontradasSucesso, livroDTO, ResultType.Sucesso);
+            return Result<LivroResponseDTO>(true, EncontradasSucesso, livroDTO, ResultType.Sucesso);
 
         }
 
-        public ServiceResult<bool> ApagarLivro(int id)
+        public async Task<ServiceResult<bool>> ApagarLivroAsync(int id)
         {
-            var livroProcurado = _context.Livros.Include(l => l.Categorias).FirstOrDefault(l => l.LivroId == id);
+            var livroProcurado = await _context.Livros.Include(l => l.Categorias).FirstOrDefaultAsync(l => l.LivroId == id);
 
             if (livroProcurado == null)
                 return Result<bool>(false, NaoEncontrado, false, ResultType.NotFound);
@@ -122,34 +182,22 @@ namespace TesteApiWeb.Services
             if (livroProcurado.Categorias != null && livroProcurado.Categorias.Any())
                 return Result<bool>(false, RegistrosVinculados, false, ResultType.Conflito);
 
-            _context.Livros.Remove(livroProcurado);
-            _context.SaveChanges();
+            try
+            {
+                _context.Livros.Remove(livroProcurado);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return Result<bool>(
+                    false,
+                    ErroAoApagar  + "Db Erro: " + ex,
+                    false,
+                    ResultType.Erro
+                );
+            }
 
             return Result<bool>(true, ExcluidoSucesso, true, ResultType.Sucesso);
-        }
-        private LivroDTOCreateEdit EntityToEditDTO(Livro livro)
-        {
-            return new LivroDTOCreateEdit
-            {
-                Nome = livro.Nome,
-                Quantidade = livro.Quantidade,
-                CategoriasIds = livro.Categorias?.Select(c => c.CategoriaId).ToList() ?? new List<int>()
-            };
-        }
-
-        private LivroDTOGetGetId EntityToGetDTO(Livro livro)
-        {
-            return new LivroDTOGetGetId
-            {
-                LivroId = livro.LivroId,
-                Nome = livro.Nome,
-                Quantidade = livro.Quantidade,
-                Categorias = livro.Categorias?.Select(c => new CategoriaDTO
-                {
-                    CategoriaId = c.CategoriaId,
-                    Nome = c.Nome
-                }).ToList() ?? new List<CategoriaDTO>()
-            };
         }
     }
 }

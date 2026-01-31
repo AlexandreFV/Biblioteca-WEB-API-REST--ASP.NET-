@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DTOS.Usuario;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using TesteApiWeb.Class;
 using TesteApiWeb.Context;
-using TesteApiWeb.Models;
 using TesteApiWeb.Services;
+using static DTOS.Usuario.UsuarioDTO;
 
 namespace TesteApiWeb.Controllers
 {
@@ -22,26 +23,15 @@ namespace TesteApiWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult ObterUsuarios() => RespostaCustomizada(_usuarioService.ListarUsuarios());
+        public async Task<IActionResult> ObterUsuariosAsync() => RespostaCustomizada(await _usuarioService.ListarUsuariosAsync());
 
         [HttpGet("{id}")]
-        public IActionResult ObterUsuarioPorId(int id) => RespostaCustomizada(_usuarioService.ProcurarUsuario(id));
-
-        [HttpPost]
-        public IActionResult AdicionarUsuario(UsuarioDTO usuarioDTO)
-        {
-            var result = _usuarioService.CriarUsuario(usuarioDTO);
-
-            if (result.Sucesso)
-                return CreatedAtAction(nameof(ObterUsuarioPorId), new { id = result.Dados!.UsuarioId }, result.Dados);
-
-            return RespostaCustomizada(result);
-        }
+        public async Task<IActionResult> ObterUsuarioPorIdAsync(string id) => RespostaCustomizada(await _usuarioService.ProcurarUsuarioAsync(id));
 
         [HttpPut("{id}")]
-        public IActionResult EditarUsuario(int id, UsuarioDTO usuarioDTO) => RespostaCustomizada(_usuarioService.EditarUsuario(id, usuarioDTO));
+        public async Task<IActionResult> EditarUsuarioAsync(string id, UsuarioDTOEdit usuarioDTO) => RespostaCustomizada(await _usuarioService.EditarUsuarioAsync(id, usuarioDTO));
 
         [HttpDelete("{id}")]
-        public IActionResult ExcluirUsuario(int id) => RespostaCustomizada(_usuarioService.ApagarUsuario(id));
+        public async Task<IActionResult> ExcluirUsuarioAsync(string id) => RespostaCustomizada(await _usuarioService.ApagarUsuarioAsync(id));
     }
 }
