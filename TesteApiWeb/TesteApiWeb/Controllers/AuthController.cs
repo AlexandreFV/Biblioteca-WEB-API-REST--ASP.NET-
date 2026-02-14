@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Biblioteca_WEB_API_REST_ASP;
+using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TesteApiWeb.Class;
-using TesteApiWeb.Models;
-using TesteApiWeb.Services;
-using static TesteApiWeb.Models.AuthDTO;
+using static DTOS.Auth.AuthDTO;
 
-namespace TesteApiWeb.Controllers
+namespace Biblioteca_WEB_API_REST_ASP.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -19,7 +19,7 @@ namespace TesteApiWeb.Controllers
             _authService = authService; 
         }
         [AllowAnonymous]
-        [HttpPost("Entrar")]
+        [HttpPost("login")]
         public async Task<IActionResult> EntrarAsync(LoginDTO loginDto)
         {
             var result = await _authService.LoginAsync(loginDto);
@@ -27,10 +27,10 @@ namespace TesteApiWeb.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("Registrar")]
-        public async Task<IActionResult> RegistrarAsync(RegisterDTOCreate registerDTO) 
+        [HttpPost("register")]
+        public async Task<IActionResult> RegistrarAsync(RegisterDTOCreate registerDTO, bool isAdmin) 
         { 
-            var result = await _authService.CriarUsuarioAsync(registerDTO);
+            var result = await _authService.CriarUsuarioAsync(registerDTO, isAdmin);
             return RespostaCustomizada(result);
 
         }

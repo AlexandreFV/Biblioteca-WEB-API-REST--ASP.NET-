@@ -1,9 +1,9 @@
 ﻿using DTOS.Usuario;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TesteApiWeb.Class;
-using TesteApiWeb.Context;
-using TesteApiWeb.Models;
+using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Context;
+using Biblioteca_WEB_API_REST_ASP.Models;
 using static DTOS.Usuario.UsuarioDTO;
 
 namespace TesteApiWeb.Services

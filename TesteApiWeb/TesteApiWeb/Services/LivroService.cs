@@ -1,12 +1,8 @@
-﻿using DTOS.Categoria;
-using DTOS.Livro;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.ObjectModel;
-using System.Data.Common;
-using System.Linq;
-using TesteApiWeb.Class;
-using TesteApiWeb.Context;
-using TesteApiWeb.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Context;
+using Biblioteca_WEB_API_REST_ASP.Models;
 using static DTOS.Categoria.CategoriaDTO;
 using static DTOS.Livro.LivroDTO;
 
@@ -19,10 +15,14 @@ namespace TesteApiWeb.Services
 
         public LivroService(AppDBContextSistema context) { _context = context; }
 
-        public async Task<ServiceResult<IEnumerable<LivroResponseDTO>>> ListarLivrosAsync()
+        public async Task<ServiceResult<IEnumerable<LivroResponseDTO>>> ListarLivrosAsync(ClaimsPrincipal userClaim)
         {
-            var todosLivros = await _context.Livros.Include(l => l.Categorias).AsNoTracking().
-                Select(l => new LivroResponseDTO
+
+            var isAdmin = userClaim.IsInRole("Admin");
+
+
+            var livros = await AplicarFiltroVisualizacao(_context.Livros.AsNoTracking(), isAdmin)
+                .Select(l => new LivroResponseDTO
                 {
                     LivroId = l.LivroId,
                     Nome = l.Nome,
@@ -30,15 +30,12 @@ namespace TesteApiWeb.Services
                     Categorias = l.Categorias!.Select(c => new CategoriaResponseDTO
                     {
                         CategoriaId = c.CategoriaId,
-                        Nome = c.Nome,
+                        Nome = c.Nome
                     }).ToList()
                 })
                 .ToListAsync();
 
-            if (!todosLivros.Any())
-                return Result<IEnumerable<LivroResponseDTO>>(false, NaoEncontrado, null, ResultType.NotFound);
-
-            return Result<IEnumerable<LivroResponseDTO>>(true, EncontradasSucesso, todosLivros, ResultType.Sucesso);
+            return Result<IEnumerable<LivroResponseDTO>>(true, EncontradasSucesso, livros, ResultType.Sucesso);
 
         }
 
@@ -46,23 +43,26 @@ namespace TesteApiWeb.Services
         {
             var nomeFormatado = PadronizarNome(livroDTO.Nome);
 
-            if (await _context.Livros.AsNoTracking().AnyAsync(l => l.Nome == nomeFormatado))
+            var nomeJaExiste = await _context.Livros
+                .AsNoTracking() 
+                .AnyAsync(l => l.Nome == nomeFormatado && l.Ativo);
+
+            if (nomeJaExiste)
                 return Result<LivroResponseDTO>(false, JaExisteEsseNome, null, ResultType.Conflito);
 
-            var idsCategorias = livroDTO.CategoriasId ?? new List<int>();
-
-            var categoriasSelecionadas = await _context.Categorias
-                .Where(c => idsCategorias.Contains(c.CategoriaId))
+            var categorias = await _context.Categorias
+                .Where(c => livroDTO.CategoriasId!.Contains(c.CategoriaId) && c.Ativo)
                 .ToListAsync();
 
-            if (idsCategorias.Count != categoriasSelecionadas.Count)
-                return Result<LivroResponseDTO>(false, "Uma ou mais categorias informadas não foram encontradas.", null, ResultType.NotFound);
+            if (categorias.Count != livroDTO.CategoriasId!.Count)
+                return Result<LivroResponseDTO>(false, "Categoria inválida.", null, ResultType.NotFound);
 
             var novoLivroEntity = new Livro
             {
                 Nome = nomeFormatado,
                 Quantidade = livroDTO.Quantidade,
-                Categorias = categoriasSelecionadas,
+                Categorias = categorias,
+                Ativo = true
             };
 
 
@@ -83,19 +83,7 @@ namespace TesteApiWeb.Services
 
             }
 
-            var result = new LivroResponseDTO
-            {
-                LivroId = novoLivroEntity.LivroId,
-                Nome = novoLivroEntity.Nome,
-                Quantidade = novoLivroEntity.Quantidade,
-                Categorias = categoriasSelecionadas.Select(c => new CategoriaResponseDTO
-                {
-                    CategoriaId = c.CategoriaId,
-                    Nome = c.Nome
-                }).ToList()
-            };
-
-            return Result<LivroResponseDTO>(true, AdicionadoSucesso, result, ResultType.Criado);
+            return Result<LivroResponseDTO>(true, AdicionadoSucesso, Mapear(novoLivroEntity), ResultType.Criado);
 
         }
 
@@ -106,17 +94,27 @@ namespace TesteApiWeb.Services
             if (livroProcurado == null)
                 return Result<LivroResponseDTO>(false, NaoEncontrado, null, ResultType.NotFound);
 
-            livroProcurado.Nome = PadronizarNome(livroDTO.Nome);
-            livroProcurado.Quantidade = livroDTO.Quantidade;
+            var nomeFormatado = PadronizarNome(livroDTO.Nome);
 
-            var ids = livroDTO.CategoriasId ?? new List<int>();
-            var novasCategorias = await _context.Categorias
-                .Where(c => ids.Contains(c.CategoriaId))
+            var nomeDuplicado = await _context.Livros
+                .AnyAsync(l => l.LivroId != id && l.Nome == nomeFormatado && l.Ativo);
+
+            if (nomeDuplicado)
+                return Result<LivroResponseDTO>(false, JaExisteEsseNome, null, ResultType.Conflito);
+
+            var categorias = await _context.Categorias
+                .Where(c => livroDTO.CategoriasId!.Contains(c.CategoriaId) && c.Ativo)
                 .ToListAsync();
+
+            if (categorias.Count != livroDTO.CategoriasId!.Count)
+                return Result<LivroResponseDTO>(false, "Categoria inválida.", null, ResultType.NotFound);
+
+            livroProcurado.Nome = nomeFormatado;
+            livroProcurado.Quantidade = livroDTO.Quantidade;
+            livroProcurado.Categorias = categorias;
 
             try
             {
-                livroProcurado.Categorias = novasCategorias;
                 await _context.SaveChangesAsync();
 
             }
@@ -130,61 +128,39 @@ namespace TesteApiWeb.Services
                 );
             }
 
-            var result = new LivroResponseDTO
-            {
-                LivroId = livroProcurado.LivroId,
-                Nome = livroProcurado.Nome,
-                Quantidade = livroProcurado.Quantidade,
-                Categorias = livroProcurado.Categorias!.Select(c => new CategoriaResponseDTO
-                {
-                    CategoriaId = c.CategoriaId,
-                    Nome = c.Nome,
-                }).ToList()
-            };
-
-            return Result(true, AtualizadoSucesso, result, ResultType.Sucesso);
+            return Result(true, AtualizadoSucesso, Mapear(livroProcurado), ResultType.Sucesso);
 
         }
 
-        public async Task<ServiceResult<LivroResponseDTO>> ProcurarLivroPorIdAsync(int id)
+        public async Task<ServiceResult<LivroResponseDTO>> ProcurarLivroPorIdAsync(int id, ClaimsPrincipal userClaim)
         {
+
+            var isAdmin = userClaim.IsInRole("Admin");
+
             var livroBanco = await _context.Livros
-                    .Include(l => l.Categorias)
                     .AsNoTracking()
+                    .Include(l => l.Categorias)
                     .FirstOrDefaultAsync(l => l.LivroId == id);
 
-            if (livroBanco == null)
+            if (livroBanco == null || (!isAdmin && (!livroBanco.Ativo || livroBanco.Quantidade <= 0)))
                 return Result<LivroResponseDTO>(false, NaoEncontrado, null, ResultType.NotFound);
 
-            var livroDTO = new LivroResponseDTO
-            {
-                Nome = livroBanco.Nome,
-                Quantidade = livroBanco.Quantidade,
-                LivroId = livroBanco.LivroId,
-                Categorias = livroBanco.Categorias!.Select(c => new CategoriaResponseDTO
-                {
-                    Nome = c.Nome,
-                    CategoriaId = c.CategoriaId,
-                }).ToList(),
-            };
-
-            return Result<LivroResponseDTO>(true, EncontradasSucesso, livroDTO, ResultType.Sucesso);
+            return Result(true, EncontradasSucesso, Mapear(livroBanco), ResultType.Sucesso);
 
         }
 
         public async Task<ServiceResult<bool>> ApagarLivroAsync(int id)
         {
-            var livroProcurado = await _context.Livros.Include(l => l.Categorias).FirstOrDefaultAsync(l => l.LivroId == id);
+            var livroProcurado = await _context.Livros.FirstOrDefaultAsync(l => l.LivroId == id);
 
             if (livroProcurado == null)
                 return Result<bool>(false, NaoEncontrado, false, ResultType.NotFound);
 
-            if (livroProcurado.Categorias != null && livroProcurado.Categorias.Any())
-                return Result<bool>(false, RegistrosVinculados, false, ResultType.Conflito);
+            /*TODO Adicionar a verificação de emprestimo ativo*/
+            livroProcurado.Ativo = false;
 
             try
             {
-                _context.Livros.Remove(livroProcurado);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
@@ -199,5 +175,32 @@ namespace TesteApiWeb.Services
 
             return Result<bool>(true, ExcluidoSucesso, true, ResultType.Sucesso);
         }
+
+        private IQueryable<Livro> AplicarFiltroVisualizacao(IQueryable<Livro> query, bool isAdmin)
+        {
+
+            if (!isAdmin)
+                query = query.Where(l => l.Quantidade > 0 && l.Ativo);
+
+            return query;
+        }
+
+        private LivroResponseDTO Mapear(Livro l) 
+        {
+            var LivroMapeado = new LivroResponseDTO
+            {
+                LivroId = l.LivroId,
+                Nome = l.Nome,
+                Quantidade = l.Quantidade,
+                Categorias = l.Categorias!.Select(c => new CategoriaResponseDTO
+                {
+                    CategoriaId = c.CategoriaId,
+                    Nome = c.Nome
+                }).ToList()
+            };
+
+            return LivroMapeado;
+        }
+
     }
 }

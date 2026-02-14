@@ -1,16 +1,12 @@
-﻿using DTOS.Usuario;
-using Microsoft.AspNetCore.Http;
+﻿using Biblioteca_WEB_API_REST_ASP;
+using Biblioteca_WEB_API_REST_ASP.Class;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using TesteApiWeb.Class;
-using TesteApiWeb.Context;
 using TesteApiWeb.Services;
 using static DTOS.Usuario.UsuarioDTO;
 
-namespace TesteApiWeb.Controllers
+namespace Biblioteca_WEB_API_REST_ASP.Controllers
 {
-    [Route("/api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerPersonalizado
     {

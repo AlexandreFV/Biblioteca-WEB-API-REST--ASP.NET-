@@ -1,10 +1,10 @@
-﻿namespace TesteApiWeb.Class
+﻿namespace Biblioteca_WEB_API_REST_ASP.Class
 {
     public class ServiceResult<T>
     {
 
         public bool Sucesso { get; set; }
-        public String Mensagem { get; set; } = String.Empty;
+        public string Mensagem { get; set; } = String.Empty;
         public T? Dados { get; set; }
         public ResultType Tipo { get; set; }
 

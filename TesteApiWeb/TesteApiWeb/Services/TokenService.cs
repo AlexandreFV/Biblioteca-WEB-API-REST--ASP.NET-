@@ -1,26 +1,32 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using TesteApiWeb.Models;
+using System.Threading.Tasks;
+using Biblioteca_WEB_API_REST_ASP.Models;
 
 namespace TesteApiWeb.Services
 {
     public class TokenService
 {
         private readonly IConfiguration _configuration;
+        private readonly UserManager<Usuario> _userManager;
 
-        public TokenService(IConfiguration config)
+        public TokenService(IConfiguration config, UserManager<Usuario> userManager)
         {
             _configuration = config;
+            _userManager = userManager;
         }
 
-        public string GerarToken(Usuario usuario)   
+        public async Task<string> GerarToken(Usuario usuario)   
         {
             var _jwtSecret = _configuration["Jwt:Secret"];
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var roles = await _userManager.GetRolesAsync(usuario);
 
             var claims = new List<Claim>
             {
@@ -29,7 +35,7 @@ namespace TesteApiWeb.Services
                 new Claim(ClaimTypes.Email, usuario.Email ?? "")
             };
 
-            Console.Write("Claims " + claims);
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],

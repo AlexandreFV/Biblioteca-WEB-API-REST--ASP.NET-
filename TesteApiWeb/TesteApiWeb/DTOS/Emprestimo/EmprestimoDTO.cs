@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Biblioteca_WEB_API_REST_ASP.Models;
+using System.ComponentModel.DataAnnotations;
+using static DTOS.SolicitacaoEmprestimo.SolicitacaoEmprestimoDTO;
+using static DTOS.Usuario.UsuarioDTO;
 
 namespace DTOS.Emprestimo
 {
@@ -7,46 +10,35 @@ namespace DTOS.Emprestimo
 
         public class EmprestimoDTOCreate
         {
-            [Required(ErrorMessage = "O Id do livro é obrigatório")]
-            public int LivroId { get; set; }
 
-            [Required(ErrorMessage = "O Id do usuario a quem será emprestado é obrigatório")]
-            public int UsuarioEmprestimoId { get; set; }
-
-            [Required(ErrorMessage = "A data prevista para devolucao é obrigatorio")]
+            [Required]
+            public int SolicitacaoEmprestimoId { get; set; }
+            [Required]
+            public string UsuarioAdminId { get; set; } = string.Empty;
             public DateTime DataPrevistaDevolucao { get; set; }
 
         }
 
-        public class EmprestimoDTOUpdate
+        public class EmprestimoDTODevolucao
         {
-            [Required(ErrorMessage = "O Id do livro é obrigatório")]
-            public int LivroId { get; set; }
-
-            [Required(ErrorMessage = "O Id do usuario a quem será emprestado é obrigatório")]
-            public int UsuarioEmprestimoId { get; set; }
-
-            [Required(ErrorMessage = "A data prevista para devolucao é obrigatorio")]
-            public DateTime DataPrevistaDevolucao { get; set; }
-            public DateTime? DataDevolucao { get; set; }
+            [Required]
+            public DateTime DataDevolucao { get; set; }
 
         }
 
         public class EmprestimoDTOResponse
         {
-            public int EmprestimoId { get; set; }
-            public DateTime DataEmprestimo { get; set; }
+
+            public int SolicitacaoEmprestimoId { get; set; }
+            public SolicitacaoEmprestimoDTOResponse SolicitacaoEmprestimo { get; set; } = null!;
+
+            public string UsuarioAdminId { get; set; } = string.Empty;
+            public UsuarioDTOResponse UsuarioAdminAutorizou { get; set; } = null!;
+            public DateTime DataAceiteEmprestimo { get; set; } = DateTime.UtcNow;
             public DateTime DataPrevistaDevolucao { get; set; }
             public DateTime? DataDevolucao { get; set; }
 
-            public int UsuarioEmprestimoId { get; set; }
-            public string NomeUsuarioEmprestimo { get; set; } = string.Empty;
-
-            public int UsuarioAdminId { get; set; }
-            public string NomeUsuarioAdmin { get; set; } = string.Empty;
-
-            public int LivroId { get; set; }
-            public string NomeLivro { get; set; } = String.Empty;
+            public bool Ativo => DataDevolucao == null;
 
         }
     }

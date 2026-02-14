@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace TesteApiWeb.Models
+namespace Biblioteca_WEB_API_REST_ASP.Models
 {
     public class Usuario : IdentityUser
     {

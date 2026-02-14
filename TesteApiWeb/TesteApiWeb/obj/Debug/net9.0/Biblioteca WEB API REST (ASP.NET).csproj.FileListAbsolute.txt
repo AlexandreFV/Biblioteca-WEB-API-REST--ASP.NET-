@@ -164,7 +164,6 @@ C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Te
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net9.0\staticwebassets.build.endpoints.json
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net9.0\swae.build.ex.cache
-C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net9.0\Bibliote.38A8C12A.Up2Date
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net9.0\Biblioteca WEB API REST (ASP.NET).dll
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\TesteApiWeb\obj\Debug\net9.0\refint\Biblioteca WEB API REST (ASP.NET).dll

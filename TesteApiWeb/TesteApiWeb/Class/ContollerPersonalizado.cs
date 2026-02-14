@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Biblioteca_WEB_API_REST_ASP.Class;
 
-namespace TesteApiWeb.Class
+namespace Biblioteca_WEB_API_REST_ASP.Class
 {
     public class ControllerPersonalizado : ControllerBase
     {

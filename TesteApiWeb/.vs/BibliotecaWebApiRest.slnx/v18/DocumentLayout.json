@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2631AD08-34E2-20D8-D8BB-C953C2E0358F}|TesteApiWeb\\BibliotecaWebApiRest.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\testeapiweb\\services\\solicitacaoemprestimoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2631AD08-34E2-20D8-D8BB-C953C2E0358F}|TesteApiWeb\\BibliotecaWebApiRest.csproj|solutionrelative:testeapiweb\\services\\solicitacaoemprestimoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2631AD08-34E2-20D8-D8BB-C953C2E0358F}|TesteApiWeb\\BibliotecaWebApiRest.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\testeapiweb\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2631AD08-34E2-20D8-D8BB-C953C2E0358F}|TesteApiWeb\\BibliotecaWebApiRest.csproj|solutionrelative:testeapiweb\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2631AD08-34E2-20D8-D8BB-C953C2E0358F}|TesteApiWeb\\BibliotecaWebApiRest.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\testeapiweb\\models\\solicitacaoemprestimo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2631AD08-34E2-20D8-D8BB-C953C2E0358F}|TesteApiWeb\\BibliotecaWebApiRest.csproj|solutionrelative:testeapiweb\\models\\solicitacaoemprestimo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SolicitacaoEmprestimo.cs",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Models\\SolicitacaoEmprestimo.cs",
+              "RelativeDocumentMoniker": "TesteApiWeb\\Models\\SolicitacaoEmprestimo.cs",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Models\\SolicitacaoEmprestimo.cs",
+              "RelativeToolTip": "TesteApiWeb\\Models\\SolicitacaoEmprestimo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T19:04:56.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SolicitacaoController.cs",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Controllers\\SolicitacaoController.cs",
+              "RelativeDocumentMoniker": "TesteApiWeb\\Controllers\\SolicitacaoController.cs",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Controllers\\SolicitacaoController.cs",
+              "RelativeToolTip": "TesteApiWeb\\Controllers\\SolicitacaoController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAwwDEAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T08:46:39.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SolicitacaoEmprestimoService.cs",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Services\\SolicitacaoEmprestimoService.cs",
+              "RelativeDocumentMoniker": "TesteApiWeb\\Services\\SolicitacaoEmprestimoService.cs",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Services\\SolicitacaoEmprestimoService.cs",
+              "RelativeToolTip": "TesteApiWeb\\Services\\SolicitacaoEmprestimoService.cs",
+              "ViewState": "AgIAAPgAAAAAAAAAAAA1wOgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T04:28:52.404Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mOnTUM53K9M=",
+  "dgSpecHash": "AAWLqBWToKA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Biblioteca WEB API REST (ASP.NET).csproj",
+  "projectFilePath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\BibliotecaWebApiRest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alexandre\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

@@ -5042,9 +5042,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Biblioteca WEB API REST (ASP.NET).csproj",
-      "projectName": "Biblioteca WEB API REST (ASP.NET)",
-      "projectPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\Biblioteca WEB API REST (ASP.NET).csproj",
+      "projectUniqueName": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\BibliotecaWebApiRest.csproj",
+      "projectName": "BibliotecaWebApiRest",
+      "projectPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\BibliotecaWebApiRest.csproj",
       "packagesPath": "C:\\Users\\Alexandre\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\TesteApiWeb\\obj\\",
       "projectStyle": "PackageReference",

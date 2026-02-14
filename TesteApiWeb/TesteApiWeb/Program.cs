@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Biblioteca_WEB_API_REST_ASP;
+using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Context;
+using Biblioteca_WEB_API_REST_ASP.Models;
+using Biblioteca_WEB_API_REST_ASP.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
-using TesteApiWeb.Context;
-using TesteApiWeb.Models;
 using TesteApiWeb.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -126,8 +129,15 @@ builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<LivroService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<SolicitacaoEmprestimoService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await Roles.CreateRolesAsync(services);
+}
 
 if (app.Environment.IsDevelopment())
 {

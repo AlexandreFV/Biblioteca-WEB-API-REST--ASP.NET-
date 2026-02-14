@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using static DTOS.Usuario.UsuarioDTO;
 
-namespace TesteApiWeb.Models
+namespace DTOS.Auth
 {
     public class AuthDTO
 {
@@ -36,10 +36,6 @@ namespace TesteApiWeb.Models
             [Required(ErrorMessage = "É obrigatorio a inserção do e-mail")]
             public string Email { get; set; } = string.Empty;
            
-            [Required]
-            [RegularExpression("Admin|User")]
-            public string Role { get; set; } = "User";
-
         }
 
         public class RegisterDTOResponse 

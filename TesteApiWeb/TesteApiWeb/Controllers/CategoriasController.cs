@@ -1,18 +1,14 @@
-﻿using DTOS.Categoria;
+﻿using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text.RegularExpressions;
-using TesteApiWeb.Class;
-using TesteApiWeb.Context;
-using TesteApiWeb.Services;
 using static DTOS.Categoria.CategoriaDTO;
 
-namespace TesteApiWeb.Controllers
+namespace Biblioteca_WEB_API_REST_ASP.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class CategoriasController : ControllerPersonalizado
     {
 

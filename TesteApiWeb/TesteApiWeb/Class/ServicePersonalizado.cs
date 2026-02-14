@@ -1,4 +1,4 @@
-﻿namespace TesteApiWeb.Class
+﻿namespace Biblioteca_WEB_API_REST_ASP.Class
 {
     public abstract class ServicePersonalizado<T> where T : class
     {

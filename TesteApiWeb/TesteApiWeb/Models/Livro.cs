@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace TesteApiWeb.Models
+namespace Biblioteca_WEB_API_REST_ASP.Models
 {
     public class Livro
     {

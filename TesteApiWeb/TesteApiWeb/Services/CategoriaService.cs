@@ -1,12 +1,10 @@
-﻿using DTOS.Categoria;
+﻿using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Context;
+using Biblioteca_WEB_API_REST_ASP.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
-using TesteApiWeb.Class;
-using TesteApiWeb.Context;
-using TesteApiWeb.Models;
 using static DTOS.Categoria.CategoriaDTO;
 
-namespace TesteApiWeb.Services
+namespace Biblioteca_WEB_API_REST_ASP.Services
 {
     public class CategoriaService : ServicePersonalizado<Categoria>
     {
@@ -28,9 +26,6 @@ namespace TesteApiWeb.Services
                 })
                 .ToListAsync();
 
-            if (!categorias.Any())
-                return Result<IEnumerable<CategoriaResponseDTO>>(false, NaoEncontrado, null, ResultType.NotFound);
-
             return Result<IEnumerable<CategoriaResponseDTO>>(true, EncontradasSucesso, categorias, ResultType.Sucesso);
         }
 
@@ -43,7 +38,7 @@ namespace TesteApiWeb.Services
             if (categoriaExiste)
                 return Result<CategoriaResponseDTO>(false, JaExisteEsseNome, null, ResultType.Conflito);
 
-            var novaCategoria = new Categoria { Nome = nomeFormatado };
+            var novaCategoria = new Categoria { Nome = nomeFormatado, Ativo = true };
 
             try
             {
@@ -71,13 +66,14 @@ namespace TesteApiWeb.Services
 
         public async Task<ServiceResult<CategoriaResponseDTO>> EditarCategoriaAsync(int id, CategoriaUpdateDTO categoriaDTO)
         {
-            var categoriaBanco = await _context.Categorias.FindAsync(id);
+            var categoriaBanco = await _context.Categorias
+            .FirstOrDefaultAsync(c => c.CategoriaId == id && c.Ativo);
 
             if (categoriaBanco == null)
                 return Result<CategoriaResponseDTO>(false, NaoEncontrado, null, ResultType.NotFound);
 
             var nomeFormatado = PadronizarNome(categoriaDTO.Nome);
-
+          
             var categoriaExiste = await _context.Categorias
                 .AsNoTracking()
                 .AnyAsync(c => c.Nome == nomeFormatado && c.CategoriaId != id);
@@ -133,13 +129,13 @@ namespace TesteApiWeb.Services
             if (categoriaBanco == null)
                 return Result<bool>(false, NaoEncontrado, false, ResultType.NotFound);
 
-            if (categoriaBanco.Livros != null && categoriaBanco.Livros.Any())
+            if (categoriaBanco.Livros != null && categoriaBanco.Livros.Any(l => l.Ativo))
                 return Result<bool>(false, RegistrosVinculados, false, ResultType.Conflito);
 
+            categoriaBanco.Ativo = false;
 
             try
             {
-                _context.Categorias.Remove(categoriaBanco);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

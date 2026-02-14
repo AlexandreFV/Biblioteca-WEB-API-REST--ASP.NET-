@@ -1,13 +1,11 @@
-﻿using DTOS.Usuario;
+﻿using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Models;
 using Microsoft.AspNetCore.Identity;
-using System.Reflection.Metadata.Ecma335;
-using TesteApiWeb.Class;
-using TesteApiWeb.Models;
-using static DTOS.Categoria.CategoriaDTO;
+using TesteApiWeb.Services;
+using static DTOS.Auth.AuthDTO;
 using static DTOS.Usuario.UsuarioDTO;
-using static TesteApiWeb.Models.AuthDTO;
 
-namespace TesteApiWeb.Services
+namespace Biblioteca_WEB_API_REST_ASP.Services
 {
     public class AuthService : ServicePersonalizado<Usuario>
 {
@@ -21,7 +19,7 @@ namespace TesteApiWeb.Services
             _tokenService = tokenService;
         }
 
-        public async Task<ServiceResult<RegisterDTOResponse>> CriarUsuarioAsync(RegisterDTOCreate registerDTO)
+        public async Task<ServiceResult<RegisterDTOResponse>> CriarUsuarioAsync(RegisterDTOCreate registerDTO, bool isAdmin)
         {
             var usuarioJáExiste = await _userManager.FindByEmailAsync(registerDTO.Email);
 
@@ -36,7 +34,6 @@ namespace TesteApiWeb.Services
                 UserName = PadronizarNome(registerDTO.Nome),
             };
 
-
             var result = await _userManager.CreateAsync(usuario, registerDTO.Senha);
 
             if (!result.Succeeded)
@@ -48,6 +45,11 @@ namespace TesteApiWeb.Services
                     ResultType.Invalido
                 );
             }
+
+            var roleResult = await _userManager.AddToRoleAsync(usuario, isAdmin == true ? "Admin" : "Client");
+            
+            if (!roleResult.Succeeded)
+                return Result<RegisterDTOResponse>(false, "Erro ao definir perfil", null, ResultType.Erro);
 
             var usuarioExibir = new RegisterDTOResponse
             {
@@ -71,16 +73,7 @@ namespace TesteApiWeb.Services
             if (!senhaValida)
                 return Result<LoginResponseDTO>(false, UsuarioOuSenhaInvalidos, null, ResultType.NaoAutorizado);
 
-            var usuarioEntity = new Usuario
-            {
-                Id = usuario.Id,
-                Ativo = usuario.Ativo,
-                Email = usuario.Email,
-                Nome = usuario.Nome,
-                UserName = usuario.UserName,
-            };
-
-            var token = _tokenService.GerarToken(usuarioEntity);
+            var token = await _tokenService.GerarToken(usuario);
 
             var usuarioLogado = new LoginResponseDTO
             {

@@ -41,6 +41,15 @@
         "tags": [
           "Auth"
         ],
+        "parameters": [
+          {
+            "name": "isAdmin",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -513,7 +522,6 @@
         "required": [
           "email",
           "nome",
-          "role",
           "senha"
         ],
         "type": "object",
@@ -528,11 +536,6 @@
           },
           "email": {
             "minLength": 1,
-            "type": "string"
-          },
-          "role": {
-            "minLength": 1,
-            "pattern": "Admin|User",
             "type": "string"
           }
         },
