@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Sistema.Domain": {
+      "commandName": "Project"
+    },
+    "Perfil 2": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API",
+      "remoteDebugEnabled": false
+    }
+  }
+}

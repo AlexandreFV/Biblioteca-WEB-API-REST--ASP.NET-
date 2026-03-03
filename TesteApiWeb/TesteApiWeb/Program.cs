@@ -3,6 +3,8 @@ using Biblioteca_WEB_API_REST_ASP.Class;
 using Biblioteca_WEB_API_REST_ASP.Context;
 using Biblioteca_WEB_API_REST_ASP.Models;
 using Biblioteca_WEB_API_REST_ASP.Services;
+using BibliotecaWebApiRest.Repositories.Concretas;
+using BibliotecaWebApiRest.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -124,6 +126,10 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<ILivroRepository, LivroRepository>();
+builder.Services.AddScoped<ISolicitacaoEmprestimoRepository, SolicitacaoEmprestimoRepository>();
+
 builder.Services.AddScoped<CategoriaService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<LivroService>();
@@ -136,7 +142,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    await Roles.CreateRolesAsync(services);
+    await RoleSeeder.CreateRolesAsync(services);
 }
 
 if (app.Environment.IsDevelopment())

@@ -1,0 +1,16 @@
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema.Application.csproj.AssemblyReference.cache
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema.Application.AssemblyInfoInputs.cache
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema.Application.AssemblyInfo.cs
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema.Application.csproj.CoreCompileInputs.cache
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema.Application.sourcelink.json
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\bin\Debug\net9.0\Sistema.Application.deps.json
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\bin\Debug\net9.0\Sistema.Application.dll
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\bin\Debug\net9.0\Sistema.Application.pdb
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\bin\Debug\net9.0\Sistema.Domain.dll
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\bin\Debug\net9.0\Sistema.Domain.pdb
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema..4C1939BF.Up2Date
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema.Application.dll
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\refint\Sistema.Application.dll
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\Sistema.Application.pdb
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Application\obj\Debug\net9.0\ref\Sistema.Application.dll
