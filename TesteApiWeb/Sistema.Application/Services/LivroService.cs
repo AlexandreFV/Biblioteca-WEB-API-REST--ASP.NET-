@@ -38,6 +38,7 @@ namespace TesteApiWeb.Services
             };
 
             return LivroMapeado;
+
         }
 
         public async Task<ServiceResult<IEnumerable<LivroResponseDTO>>> listarAsync()
@@ -200,7 +201,10 @@ namespace TesteApiWeb.Services
                 Nome = nomeFormatado,
                 Quantidade = livroCreateDTO.Quantidade,
                 Categorias = categorias,
-                Ativo = true
+                Ativo = true,
+                DataCriacao = DateTime.UtcNow,
+                IdUsuarioAdminCriou = _currentUser.userId,
+                
             };
 
             await _repo.AdicionarAsync(novoLivroEntity);

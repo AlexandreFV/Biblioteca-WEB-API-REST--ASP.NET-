@@ -7,6 +7,7 @@ using Moq;
 using Sistema.Application.Interfaces;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.Categoria.CategoriaDTO;
+using FluentAssertions;
 
 namespace Sistema.Testes
 {
@@ -50,10 +51,11 @@ namespace Sistema.Testes
             var result = await _categoriaService.adicionarAsync(dto);
 
             //Assert
-            Assert.True(result.Sucesso);
+
+            result.Sucesso.Should().BeTrue();
+            result.Tipo.Should().Be(ResultType.Criado);
 
             _mockRepoCategoria.Verify(x => x.AdicionarAsync(It.IsAny<Categoria>()),Times.Once());
-
             _mockRepoCategoria.Verify(x => x.SalvarAsync(), Times.Once());
         }
 
@@ -69,9 +71,32 @@ namespace Sistema.Testes
 
             var result = await _categoriaService.adicionarAsync(dto);
 
-            Assert.False(result.Sucesso);
+            result.Sucesso.Should().BeFalse();
+            result.Tipo.Should().NotBe(ResultType.Criado);
 
         }
+
+        [Fact]
+        public async Task AdicionarCategoriaAsync_DeveDarErro_QuandoJaExisteCategoriaComMesmoNome()
+        {
+            var dto = new CategoriaCreateDTO { Nome = "Teste" };
+
+            _mockUser.Setup(x => x.IsAdmin).Returns(true);
+
+            _mockRepoCategoria
+                .Setup(x => x.ExisteCategoriaComEsseNomeAsync(It.IsAny<string>(), null))
+                .ReturnsAsync(true);
+
+            var result = await _categoriaService.adicionarAsync(dto);
+
+            result.Sucesso.Should().BeFalse();
+            result.Tipo.Should().Be(ResultType.Conflito);
+
+            _mockRepoCategoria.Verify(x => x.SalvarAsync(), Times.Never);
+            _mockRepoCategoria.Verify(x => x.AdicionarAsync(It.IsAny<Categoria>()), Times.Never);
+
+        }
+
 
         [Theory]
         [InlineData(false)]
@@ -86,6 +111,9 @@ namespace Sistema.Testes
             _mockRepoCategoria.Setup(x => x.ObterTodosAsync(isAdmin)).ReturnsAsync(listaApenasParaChecagem);
 
             var result = await _categoriaService.listarAsync();
+
+            result.Sucesso.Should().BeTrue();
+            result.Tipo.Should().Be(ResultType.Sucesso);
 
             _mockRepoCategoria.Verify(x => x.ObterTodosAsync(isAdmin), Times.Once());
         }
@@ -103,39 +131,52 @@ namespace Sistema.Testes
 
             var result = await _categoriaService.softDeletePorId(1);
 
-            Assert.True(result.Sucesso);
+            result.Sucesso.Should().BeTrue();
+            result.Tipo.Should().Be(ResultType.Sucesso);
 
             _mockRepoCategoria.Verify(x => x.SalvarAsync(), Times.Once());
+            _mockRepoCategoria.Verify(x => x.SoftDelete(It.IsAny<Categoria>()), Times.Once);
+
         }
 
         [Fact]
         public async Task SoftDeleteCategoriaAsync_DeveRetornarErro_QuandoNaoAdmin()
         {
-            var categoriaProcurada = new Categoria("Teste", "adminId");
-
             _mockUser.Setup(x => x.IsAdmin).Returns(false);
 
             var resul = await _categoriaService.softDeletePorId(1);
+
+            resul.Sucesso.Should().BeFalse();
+            resul.Tipo.Should().Be(ResultType.NaoAutorizado);
 
             _mockRepoCategoria
                 .Verify(x => x.ObterPorIdAsync(It.IsAny<int>(), It.IsAny<bool>()),
                 Times.Never);
 
+            _mockRepoCategoria.Verify(x => x.SoftDelete(It.IsAny<Categoria>()), Times.Never);
+
         }
 
         [Fact]
-        public async Task SoftDeleteCategoriaAsync_DeveRetornarErro_CategoriaNaoEncontrada()
+        public async Task SoftDeleteCategoriaAsync_DeveRetornarErro_QuandoAdminMasNaoExisteCategoria()
         {
             _mockUser.Setup(x => x.IsAdmin).Returns(true);
 
             _mockRepoCategoria.Setup(x => x.ObterPorIdAsync(It.IsAny<int>(), true)).ReturnsAsync((Categoria?)null);
 
-            var result = await _categoriaService.softDeletePorId(1);
+            var resul = await _categoriaService.softDeletePorId(1);
 
-            Assert.False(result.Sucesso);
-            Assert.Equal(ResultType.NotFound, result.Tipo);
+            resul.Sucesso.Should().BeFalse();
+            resul.Tipo.Should().Be(ResultType.NotFound);
+
+            _mockRepoCategoria
+                .Verify(x => x.ObterPorIdAsync(It.IsAny<int>(), true),
+                Times.Once);
+
+            _mockRepoCategoria.Verify(x => x.SoftDelete(It.IsAny<Categoria>()), Times.Never);
 
         }
+
 
         [Fact]
         public async Task SoftDeleteCategoriaAsync_DeveRetornarErro_CategoriaVinculadaLivro()
@@ -151,8 +192,10 @@ namespace Sistema.Testes
 
             var result = await _categoriaService.softDeletePorId(1);
 
-            Assert.False(result.Sucesso);
-            Assert.Equal(ResultType.Conflito, result.Tipo);
+            result.Sucesso.Should().BeFalse();
+            result.Tipo.Should().Be(ResultType.Conflito);
+
+            _mockRepoCategoria.Verify(x => x.SoftDelete(It.IsAny<Categoria>()), Times.Never);
         }
 
         [Fact]
@@ -175,10 +218,126 @@ namespace Sistema.Testes
 
             var result = await _categoriaService.editarAsync(1, novaCategoriaEditada);
 
-            Assert.True(result.Sucesso);
+            result.Should().NotBeNull();
+            result.Sucesso.Should().BeTrue();
+            result.Tipo.Should().Be(ResultType.Atualizado);
 
             _mockRepoCategoria.Verify(x => x.SalvarAsync(),Times.Once());
+            _mockRepoCategoria.Verify(x => x.Atualizar(It.IsAny<Categoria>()), Times.Once);
+        }
 
+        [Fact]
+        public async Task EditarCategoriaAsync_DeveDarErro_NaoEAdmin()
+        {
+            var novaCategoriaEditada = new CategoriaUpdateDTO()
+            {
+                Nome = "Teste Atualizado",
+            };
+
+            _mockUser.Setup(x => x.IsAdmin).Returns(false);
+
+            var result = await _categoriaService.editarAsync(1, novaCategoriaEditada);
+
+            result.Sucesso.Should().BeFalse();
+            result.Tipo.Should().Be(ResultType.NaoAutorizado);
+
+            _mockRepoCategoria.Verify(x => x.SalvarAsync(), Times.Never);
+            _mockRepoCategoria.Verify(x => x.Atualizar(It.IsAny<Categoria>()), Times.Never);
+
+        }
+
+        [Fact]
+        public async Task EditarCategoriaAsync_DeveDarErro_AdminMasLivroNaoEncontrado()
+        {
+            var novaCategoriaEditada = new CategoriaUpdateDTO()
+            {
+                Nome = "Teste Atualizado",
+            };
+
+            _mockUser.Setup(x => x.IsAdmin).Returns(true);
+
+            _mockRepoCategoria.Setup(x => x.ObterPorIdAsync(It.IsAny<int>(), true)).ReturnsAsync((Categoria?)null);
+
+            var result = await _categoriaService.editarAsync(1, novaCategoriaEditada);
+
+            result.Sucesso.Should().BeFalse();
+            result.Tipo.Should().Be(ResultType.NotFound);
+
+            _mockRepoCategoria
+                .Verify(x => x.ObterPorIdAsync(It.IsAny<int>(), It.IsAny<bool>()),
+                Times.Once);
+        }
+
+        [Fact]
+        public async Task EditarCategoriaAsync_DeveDarErro_AdminMasDadosInvalidosDeCategoria()
+        {
+            _mockUser.Setup(x => x.IsAdmin).Returns(true);
+
+            var result = await _categoriaService.editarAsync(1, (CategoriaUpdateDTO?)null);
+
+            result.Sucesso.Should().BeFalse();
+            result.Tipo.Should().Be(ResultType.Invalido);
+
+        }
+
+        [Fact]
+        public async Task ObterCategoriaPorId_DeveDarSucesso_IdValido()
+        {
+            _mockUser.Setup(x => x.IsAdmin).Returns(true);
+
+            Categoria categoriaEncontrada = new Categoria { Nome = "Teste", };
+
+            _mockRepoCategoria.Setup(x => x.ObterPorIdAsync(It.IsAny<int>(), true)).ReturnsAsync((categoriaEncontrada));
+
+            var result = await _categoriaService.buscarPorId(1);
+
+            result.Sucesso.Should().BeTrue();
+            result.Should().NotBeNull();
+            result.Tipo.Should().Be(ResultType.Sucesso);
+
+            _mockRepoCategoria.Verify(x => x.ObterPorIdAsync(It.IsAny<int>(), true), Times.Once);
+
+        }
+
+        [Fact]
+        public async Task ObterCategoriaPorId_DeveDarErro_CategoriaNaoEncontrada()
+        {
+            _mockUser.Setup(x => x.IsAdmin).Returns(true);
+
+            _mockRepoCategoria.Setup(x => x.ObterPorIdAsync(It.IsAny<int>(), true)).ReturnsAsync((Categoria?) null);
+
+            var result = await _categoriaService.buscarPorId(1);
+
+            result.Sucesso.Should().BeFalse();
+            result.Tipo.Should().Be(ResultType.NotFound);
+
+            _mockRepoCategoria.Verify(x => x.ObterPorIdAsync(It.IsAny<int>(), true), Times.Once);
+
+        }
+
+        [Fact]
+        public async Task EditarCategoriaAsync_DeveDarErro_QuandoJaExisteCategoriaComMesmoNome()
+        {
+            var dto = new CategoriaUpdateDTO { Nome = "Teste" };
+
+            _mockUser.Setup(x => x.IsAdmin).Returns(true);
+
+            var categoria = new Categoria("Outro Nome", "UserId");
+
+            _mockRepoCategoria
+                .Setup(x => x.ObterPorIdAsync(It.IsAny<int>(), true))
+                .ReturnsAsync(categoria);
+
+            _mockRepoCategoria
+                .Setup(x => x.ExisteCategoriaComEsseNomeAsync(It.IsAny<string>(), It.IsAny<int>()))
+                .ReturnsAsync(true);
+
+            var result = await _categoriaService.editarAsync(1, dto);
+
+            result.Sucesso.Should().BeFalse();
+            result.Tipo.Should().Be(ResultType.Conflito);
+
+            _mockRepoCategoria.Verify(x => x.SalvarAsync(), Times.Never);
         }
     }
 }
