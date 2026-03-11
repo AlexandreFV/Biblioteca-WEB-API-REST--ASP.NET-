@@ -1,9 +1,9 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Sistema.API.Middlewares;
 using Sistema.Application.Configurations;
 using Sistema.Infrastructure.Configurations;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +18,18 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+    c.IncludeXmlComments(xmlPath);
+
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Sistema API",
         Version = "v1"
     });
+
 
     // Adiciona o esquema de autenticação Bearer
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

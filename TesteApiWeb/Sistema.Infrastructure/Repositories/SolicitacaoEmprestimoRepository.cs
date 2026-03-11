@@ -53,5 +53,19 @@ namespace BibliotecaWebApiRest.Repositories.Concretas
             return await query.ToListAsync();
 
         }
+
+        public async Task<IEnumerable<SolicitacaoEmprestimo>> ObterTodasAsMinhasSolicitacoes (string userId)
+        {
+
+            var query = _context.Solicitacoes
+                .Include(s => s.LivroSolicitado)
+                .Include(s => s.UsuarioAdmin)
+                .Include(s => s.UsuarioCliente)
+                .AsNoTracking()
+                .Where(s => s.IdUsuarioCliente == userId);
+
+            return await query.ToListAsync();
+
+        }
     }
 }

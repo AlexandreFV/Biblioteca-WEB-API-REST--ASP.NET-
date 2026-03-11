@@ -95,4 +95,5 @@ C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Si
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\obj\Debug\net9.0\Sistema.API.genruntimeconfig.cache
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\obj\Debug\net9.0\ref\Sistema.API.dll
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\bin\Debug\net9.0\appsettings.json
-C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\bin\Debug\net9.0\Sistema.API.xml
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\obj\Debug\net9.0\Sistema.API.xml

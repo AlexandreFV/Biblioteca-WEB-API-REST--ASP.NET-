@@ -1,10 +1,7 @@
-﻿using Biblioteca_WEB_API_REST_ASP;
-using Biblioteca_WEB_API_REST_ASP.Class;
-using Biblioteca_WEB_API_REST_ASP.Services;
+﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sistema.Application.Interfaces.Services;
-using System.Security.Claims;
 using static DTOS.Auth.AuthDTO;
 
 namespace Biblioteca_WEB_API_REST_ASP.Controllers
@@ -21,30 +18,38 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
             _authService = authService; 
         }
 
+        /// <summary>
+        /// Realiza o login do usuario
+        /// </summary>
+        /// <param name="loginDto">Dados de usuario para login</param>
+        /// <returns>Token JWT</returns>
         [AllowAnonymous]
         [HttpPost("login")]
+        [ProducesResponseType(typeof(ServiceResult<LoginResponseDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ServiceResult<LoginResponseDTO>), StatusCodes.Status401Unauthorized)]
+
         public async Task<IActionResult> EntrarAsync(LoginDTO loginDto)
         {
             var result = await _authService.EntrarAsync(loginDto);
             return RespostaCustomizada(result);
         }
 
+        /// <summary>
+        /// Cria um novo usuario
+        /// </summary>
+        /// <param name="registerDTO">Dados de usuario para registro</param>
+        /// <param name="isAdmin">Permissao de usuario</param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("register")]
+        [ProducesResponseType(typeof(ServiceResult<RegisterDTOResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ServiceResult<RegisterDTOResponse>), StatusCodes.Status409Conflict)]
+        [ProducesResponseType(typeof(ServiceResult<RegisterDTOResponse>), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> RegistrarAsync(RegisterDTOCreate registerDTO, bool isAdmin) 
         { 
             var result = await _authService.CriarUsuarioAsync(registerDTO, isAdmin);
             return RespostaCustomizada(result);
 
         }
-
-        [HttpGet("debug")]
-        public IActionResult DebugToken()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
-            return Ok(new { userId, roles });
-        }
-
     }
 }

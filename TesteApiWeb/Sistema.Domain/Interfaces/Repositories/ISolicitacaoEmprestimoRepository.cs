@@ -9,5 +9,8 @@ namespace BibliotecaWebApiRest.Repositories.Interfaces
         Task <bool> ExisteSolicitacaoAtivaParaUsuarioELivroAsync(string userId, int livroId);
         Task<SolicitacaoEmprestimo?> ObterSolicitacaoEmprestimoPorId(int idSolicitacao, string userId, bool incluirInativos, bool isAdmin);
 
+        Task<IEnumerable<SolicitacaoEmprestimo>> ObterTodasAsMinhasSolicitacoes(string userId);
+
+
     }
 }

@@ -10,7 +10,6 @@ namespace Biblioteca_WEB_API_REST_ASP
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDBContextSistema>();
 
-            // Mesma string que você coloca no appsettings.json
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SistemaApiDotNet;Trusted_Connection=True;TrustServerCertificate=True;");
 
             return new AppDBContextSistema(optionsBuilder.Options);

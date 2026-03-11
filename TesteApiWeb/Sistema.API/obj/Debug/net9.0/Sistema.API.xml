@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sistema.API</name>
+    </assembly>
+    <members>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.AuthController.EntrarAsync(DTOS.Auth.AuthDTO.LoginDTO)">
+            <summary>
+            Realiza o login do usuario
+            </summary>
+            <param name="loginDto">Dados de usuario para login</param>
+            <returns>Token JWT</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.AuthController.RegistrarAsync(DTOS.Auth.AuthDTO.RegisterDTOCreate,System.Boolean)">
+            <summary>
+            Cria um novo usuario
+            </summary>
+            <param name="registerDTO">Dados de usuario para registro</param>
+            <param name="isAdmin">Permissao de usuario</param>
+            <returns></returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.CategoriasController.ObterCategoriasAsync">
+            <summary>
+            Listagem das categorias
+            </summary>
+            <returns>Categorias filtradas por permissao</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.CategoriasController.ObterCategoriaPorId(System.Int32)">
+            <summary>
+            Detalhes da categoria especificada por Id
+            </summary>
+            <param name="id">Identificador da categoria</param>
+            <returns>Categoria especificada com uso de permissao</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.CategoriasController.AdicionarCategoriaAsync(DTOS.Categoria.CategoriaDTO.CategoriaCreateDTO)">
+            <summary>
+            Adicao de nova categoria
+            </summary>
+            <param name="categoriaDTO">Dados da nova categoria</param>
+            <returns>Nova categoria adicionada em sistema</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.CategoriasController.EditarCategoriaAsync(System.Int32,DTOS.Categoria.CategoriaDTO.CategoriaUpdateDTO)">
+            <summary>
+            Edicao da categoria especificada por Id
+            </summary>
+            <param name="id">Identificador de categoria</param>
+            <param name="categoriaDTO">Novos dados da categoria</param>
+            <returns>Categoria editada com novas informacoes</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.CategoriasController.ExcluirCategoriaAsync(System.Int32)">
+            <summary>
+            Alterado status "ativo" da categoria
+            </summary>
+            <param name="id">Identificador da categoria</param>
+            <returns></returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.LivrosController.ObterLivrosAsync">
+            <summary>
+            Listagem dos livros
+            </summary>
+            <returns>Livros filtrados por permissao</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.LivrosController.ObterLivroPorId(System.Int32)">
+            <summary>
+            Detalhes do livro especificado por Id
+            </summary>
+            <param name="id">Identificador do livro</param>
+            <returns>Livro especificada com uso de permissao</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.LivrosController.CriarLivroAsync(DTOS.Livro.LivroDTO.LivroCreateDTO)">
+            <summary>
+            Adicao de novo livro
+            </summary>
+            <param name="livroCreateEditDTO">Dados do novo livro</param>
+            <returns>Novo livro adicionado em sistema</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.LivrosController.EditarLivroAsync(System.Int32,DTOS.Livro.LivroDTO.LivroEditDTO)">
+            <summary>
+            Edicao do livro especificado por Id
+            </summary>
+            <param name="id">Identificador de livro</param>
+            <param name="livroDto">Novos dados do livro</param>
+            <returns>Livro editado com novas informacoes</returns>
+        </member>
+        <member name="M:Biblioteca_WEB_API_REST_ASP.Controllers.LivrosController.ExcluirLivroAsync(System.Int32)">
+            <summary>
+            Alterado status "ativo" do livro
+            </summary>
+            <param name="id">Identificador do livro</param>
+            <returns></returns>
+        </member>
+        <member name="M:BibliotecaWebApiRest.Controllers.SolicitacaoController.ObterSolicitacaoAsync">
+            <summary>
+            Listagem das solicitacoes
+            </summary>
+            <returns>Solicitacoes filtradas por permissao</returns>
+        </member>
+        <member name="M:BibliotecaWebApiRest.Controllers.SolicitacaoController.ObterMinhasSolicitacoesAsync">
+            <summary>
+            Listagem das solicitacoes do usuario logado
+            </summary>
+            <returns>Solicitacoes filtradas por id de usuario</returns>
+        </member>
+        <member name="M:BibliotecaWebApiRest.Controllers.SolicitacaoController.ObterSolicitacaoPorId(System.Int32)">
+            <summary>
+            Detalhes da solicitacao especificado por Id
+            </summary>
+            <param name="id">Identificador da solicitacao</param>
+            <returns>Solicitacao especificada com uso de permissao</returns>
+        </member>
+        <member name="M:BibliotecaWebApiRest.Controllers.SolicitacaoController.CriarSolicitacaoAsync(DTOS.SolicitacaoEmprestimo.SolicitacaoEmprestimoDTO.SolicitacaoEmprestimoDTOCreate)">
+            <summary>
+            Adicao de nova solicitacao
+            </summary>
+            <param name="solicitacaoCreateDTO">Dados da nova solicitacao</param>
+            <returns>Nova solicitacao adicionada em sistema</returns>
+        </member>
+        <member name="M:BibliotecaWebApiRest.Controllers.SolicitacaoController.EditarStatusSolicitacaoAsync(System.Int32,DTOS.SolicitacaoEmprestimo.SolicitacaoEmprestimoDTO.SolicitacaoEmprestimoDTOUpdateAdmin)">
+            <summary>
+            Edicao de status da solicitacao
+            </summary>
+            <param name="id">Identificador de solicitacao</param>
+            <param name="solicitacaoDTO">Novo status da solicitacao</param>
+            <returns>Solicitacao atualizada com novo status</returns>
+        </member>
+        <member name="M:BibliotecaWebApiRest.Controllers.SolicitacaoController.CancelarSolicitacaoAsync(System.Int32)">
+            <summary>
+            Alterar status de "ativo" da solicitacao
+            </summary>
+            <param name="id">Identificador de solicitacao</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

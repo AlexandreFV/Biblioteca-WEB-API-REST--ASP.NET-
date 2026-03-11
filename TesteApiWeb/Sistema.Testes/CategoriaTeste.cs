@@ -3,11 +3,12 @@ using Biblioteca_WEB_API_REST_ASP.Models;
 using Biblioteca_WEB_API_REST_ASP.Services;
 using BibliotecaWebApiRest.Repositories.Interfaces;
 using DTOS.Categoria;
+using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Sistema.Application.Interfaces;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.Categoria.CategoriaDTO;
-using FluentAssertions;
 
 namespace Sistema.Testes
 {
@@ -17,15 +18,18 @@ namespace Sistema.Testes
         private readonly CategoriaService _categoriaService;
         private readonly Mock<ICurrentUser> _mockUser;
         private readonly Mock<ICategoriaRepository> _mockRepoCategoria;
+        private readonly Mock<ILogger<CategoriaService>> _mockLogger;
 
         public CategoriaTeste() 
         {
             _mockUser = new Mock<ICurrentUser>();
             _mockRepoCategoria = new Mock<ICategoriaRepository>();
+            _mockLogger = new Mock<ILogger<CategoriaService>>();
 
             _categoriaService = new CategoriaService(
                 _mockRepoCategoria.Object,
-                _mockUser.Object
+                _mockUser.Object,
+                _mockLogger.Object
                 );
         }
 

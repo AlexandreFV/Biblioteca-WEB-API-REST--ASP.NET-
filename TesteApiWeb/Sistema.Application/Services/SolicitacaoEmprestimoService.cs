@@ -131,6 +131,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
                 );
 
             var livroIdSolicitacaoEmprestimo = await _repoLivro.ObterLivroIncluindoCategoriaPorId(solicitacaoCreateDTO.IdLivro, false);
+
             if(livroIdSolicitacaoEmprestimo is null)
                 return ServiceResult<SolicitacaoEmprestimoDTOResponse>.Error(
                     null,
@@ -140,6 +141,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
 
 
             var solicitacaoAnteriorMesmoLivro = await _repo.ExisteSolicitacaoAtivaParaUsuarioELivroAsync(_currentUser.userId, livroIdSolicitacaoEmprestimo.Id);
+            
             if(solicitacaoAnteriorMesmoLivro is not false)
                 return ServiceResult<SolicitacaoEmprestimoDTOResponse>.Error(
                     null,
@@ -170,6 +172,17 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
         public async Task<ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>> listarAsync()
         {
             var solicitacoesBanco = await _repo.ObterTodosPorPermissaoAsync(_currentUser.IsAdmin, _currentUser.IsAdmin, _currentUser.userId);
+
+            return ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>.SuccessList(
+                solicitacoesBanco.Select(Mapear),
+                "Solicitações encontradas com sucesso",
+                ResultType.Sucesso
+            );
+        }
+
+        public async Task<ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>> ListarMinhasSolicitacoesAsync()
+        {
+            var solicitacoesBanco = await _repo.ObterTodasAsMinhasSolicitacoes(_currentUser.userId);
 
             return ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>.SuccessList(
                 solicitacoesBanco.Select(Mapear),

@@ -6,8 +6,9 @@ namespace Sistema.API.Middlewares
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _reqDele;
+        private readonly ILogger<ExceptionMiddleware> _logger;
 
-        public ExceptionMiddleware(RequestDelegate reqDele) { _reqDele = reqDele;  }
+        public ExceptionMiddleware(RequestDelegate reqDele, ILogger<ExceptionMiddleware> logger) { _reqDele = reqDele; _logger = logger;  }
 
         public async Task Invoke(HttpContext context)
         {
@@ -18,15 +19,16 @@ namespace Sistema.API.Middlewares
             }
             catch (Exception ex)
             {
-                context.Response.StatusCode = 500;
-                context.Response.StatusCode = 500;
+
+                _logger.LogError(ex, "Erro não tratado ocorreu. Path: {Path}, Metodo: {Method}", context.Request.Path, context.Request.Method);
+
+                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 context.Response.ContentType = "application/json";
 
                 var result = JsonSerializer.Serialize(
                     new
                     {
                         message = "Erro interno no servidor",
-                        detail =   ex.Message,
                     }
                 );
 

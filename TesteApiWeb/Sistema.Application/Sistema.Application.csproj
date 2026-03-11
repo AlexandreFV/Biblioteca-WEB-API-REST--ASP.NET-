@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Sistema.Domain\Sistema.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Validators\" />
-  </ItemGroup>
-
 </Project>
