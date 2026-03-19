@@ -1,14 +1,14 @@
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-COPY *.sln .
+COPY *.slnx .
 
 COPY Sistema.API/*.csproj ./Sistema.API/
 COPY Sistema.Application/*.csproj ./Sistema.Application/
 COPY Sistema.Domain/*.csproj ./Sistema.Domain/
 COPY Sistema.Infrastructure/*.csproj ./Sistema.Infrastructure/
 
-RUN dotnet restore
+RUN dotnet restore Sistema.API/Sistema.API.csproj
 
 COPY . .
 
@@ -16,7 +16,7 @@ WORKDIR /app/Sistema.API
 
 RUN dotnet publish -c Release -o /publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 COPY --from=build /publish .
