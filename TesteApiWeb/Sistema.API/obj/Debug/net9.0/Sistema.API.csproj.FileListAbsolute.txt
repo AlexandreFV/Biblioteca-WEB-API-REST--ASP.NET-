@@ -98,3 +98,5 @@ C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Si
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\bin\Debug\net9.0\Sistema.API.xml
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\obj\Debug\net9.0\Sistema.API.xml
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\bin\Debug\net9.0\Npgsql.dll
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.API\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

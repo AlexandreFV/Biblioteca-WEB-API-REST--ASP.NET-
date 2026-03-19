@@ -1,4 +1,6 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Context;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Sistema.API.Middlewares;
 using Sistema.Application.Configurations;
@@ -71,6 +73,9 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
+    var db = scope.ServiceProvider.GetRequiredService<AppDBContextSistema>();
+    db.Database.Migrate();
+
     var services = scope.ServiceProvider;
     await Roles.CreateRolesAsync(services);
 }
