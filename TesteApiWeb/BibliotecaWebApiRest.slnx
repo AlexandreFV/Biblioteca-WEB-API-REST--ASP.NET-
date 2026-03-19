@@ -1,4 +1,7 @@
 <Solution>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
   <Project Path="Sistema.API/Sistema.API.csproj" Id="e288074c-186f-44f5-9a49-3bb616fb78dc" />
   <Project Path="Sistema.Application/Sistema.Application.csproj" Id="918dc3e5-7975-4758-a0d0-b3134c8788e4" />
   <Project Path="Sistema.Domain/Sistema.Domain.csproj" Id="3b5d54e5-be83-4df4-b237-14ed4099b9e6" />
