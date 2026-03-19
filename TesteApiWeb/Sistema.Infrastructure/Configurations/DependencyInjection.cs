@@ -23,9 +23,8 @@ namespace Sistema.Infrastructure.Configurations
             IConfiguration config)
         {
             // 1️⃣ Configura DbContext
-            var connectionString = config.GetConnectionString("SistemaAPIWeb");
             services.AddDbContext<AppDBContextSistema>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
 
             // 2️⃣ Configura Identity
             services
