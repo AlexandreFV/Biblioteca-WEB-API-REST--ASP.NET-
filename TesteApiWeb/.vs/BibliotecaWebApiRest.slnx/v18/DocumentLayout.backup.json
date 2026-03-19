@@ -3,44 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.testes\\authteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|solutionrelative:sistema.testes\\authteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5683B8F3-56D7-4641-B324-0CC73D702D50}|Sistema.Infrastructure\\Sistema.Infrastructure.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.infrastructure\\sistema.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5683B8F3-56D7-4641-B324-0CC73D702D50}|Sistema.Infrastructure\\Sistema.Infrastructure.csproj|solutionrelative:sistema.infrastructure\\sistema.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5683B8F3-56D7-4641-B324-0CC73D702D50}|Sistema.Infrastructure\\Sistema.Infrastructure.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.infrastructure\\services\\identityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5683B8F3-56D7-4641-B324-0CC73D702D50}|Sistema.Infrastructure\\Sistema.Infrastructure.csproj|solutionrelative:sistema.infrastructure\\services\\identityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.testes\\sistema.testes.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|solutionrelative:sistema.testes\\sistema.testes.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B5D54E5-BE83-4DF4-B237-14ED4099B9E6}|Sistema.Domain\\Sistema.Domain.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.domain\\sistema.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3B5D54E5-BE83-4DF4-B237-14ED4099B9E6}|Sistema.Domain\\Sistema.Domain.csproj|solutionrelative:sistema.domain\\sistema.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\sistema.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\sistema.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\dtos\\authdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\dtos\\authdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.testes\\solicitacaoemprestimoteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|solutionrelative:sistema.testes\\solicitacaoemprestimoteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\services\\solicitacaoemprestimoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\services\\solicitacaoemprestimoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.testes\\livroteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|solutionrelative:sistema.testes\\livroteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\dtos\\solicitacaoemprestimodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\dtos\\solicitacaoemprestimodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\sistema.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\sistema.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,131 +35,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IdentityService.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure\\Services\\IdentityService.cs",
-              "RelativeDocumentMoniker": "Sistema.Infrastructure\\Services\\IdentityService.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure\\Services\\IdentityService.cs",
-              "RelativeToolTip": "Sistema.Infrastructure\\Services\\IdentityService.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAMwFEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:41:46.432Z",
+              "Title": "Sistema.Testes",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Sistema.Testes.csproj",
+              "RelativeDocumentMoniker": "Sistema.Testes\\Sistema.Testes.csproj",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Sistema.Testes.csproj",
+              "RelativeToolTip": "Sistema.Testes\\Sistema.Testes.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-19T20:00:59.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthTeste.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\AuthTeste.cs",
-              "RelativeDocumentMoniker": "Sistema.Testes\\AuthTeste.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\AuthTeste.cs",
-              "RelativeToolTip": "Sistema.Testes\\AuthTeste.cs",
-              "ViewState": "AgIAAOAAAAAAAAAAAAAYwPMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:40:13.104Z",
+              "Title": "Sistema.Infrastructure",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure\\Sistema.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Sistema.Infrastructure\\Sistema.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure\\Sistema.Infrastructure.csproj",
+              "RelativeToolTip": "Sistema.Infrastructure\\Sistema.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-19T20:00:58.509Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Sistema.API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAQwDIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:39:19.052Z",
+              "Title": "Sistema.Domain",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Domain\\Sistema.Domain.csproj",
+              "RelativeDocumentMoniker": "Sistema.Domain\\Sistema.Domain.csproj",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Domain\\Sistema.Domain.csproj",
+              "RelativeToolTip": "Sistema.Domain\\Sistema.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-19T20:00:55.67Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "Sistema.Application\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\AuthService.cs",
-              "RelativeToolTip": "Sistema.Application\\Services\\AuthService.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAwwKUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:39:13.495Z",
+              "Title": "Sistema.Application",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
+              "RelativeDocumentMoniker": "Sistema.Application\\Sistema.Application.csproj",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
+              "RelativeToolTip": "Sistema.Application\\Sistema.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-19T20:00:54.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AuthDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\DTOs\\AuthDTO.cs",
-              "RelativeDocumentMoniker": "Sistema.Application\\DTOs\\AuthDTO.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\DTOs\\AuthDTO.cs",
-              "RelativeToolTip": "Sistema.Application\\DTOs\\AuthDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:39:09.716Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SolicitacaoController.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\SolicitacaoController.cs",
-              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\SolicitacaoController.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\SolicitacaoController.cs",
-              "RelativeToolTip": "Sistema.API\\Controllers\\SolicitacaoController.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAADwvxkAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:34:00.414Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SolicitacaoEmprestimoDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\DTOs\\SolicitacaoEmprestimoDTO.cs",
-              "RelativeDocumentMoniker": "Sistema.Application\\DTOs\\SolicitacaoEmprestimoDTO.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\DTOs\\SolicitacaoEmprestimoDTO.cs",
-              "RelativeToolTip": "Sistema.Application\\DTOs\\SolicitacaoEmprestimoDTO.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAkwC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T21:27:29.314Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LivroTeste.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\LivroTeste.cs",
-              "RelativeDocumentMoniker": "Sistema.Testes\\LivroTeste.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\LivroTeste.cs",
-              "RelativeToolTip": "Sistema.Testes\\LivroTeste.cs",
-              "ViewState": "AgIAACkBAAAAAAAAAAAiwEQAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:45:18.571Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SolicitacaoEmprestimoService.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\SolicitacaoEmprestimoService.cs",
-              "RelativeDocumentMoniker": "Sistema.Application\\Services\\SolicitacaoEmprestimoService.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\SolicitacaoEmprestimoService.cs",
-              "RelativeToolTip": "Sistema.Application\\Services\\SolicitacaoEmprestimoService.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAQwI4AAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:41:14.326Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SolicitacaoEmprestimoTeste.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\SolicitacaoEmprestimoTeste.cs",
-              "RelativeDocumentMoniker": "Sistema.Testes\\SolicitacaoEmprestimoTeste.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\SolicitacaoEmprestimoTeste.cs",
-              "RelativeToolTip": "Sistema.Testes\\SolicitacaoEmprestimoTeste.cs",
-              "ViewState": "AgIAAJoBAAAAAAAAAAAmwFcBAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:40:50.471Z",
+              "Title": "Sistema.API",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Sistema.API.csproj",
+              "RelativeDocumentMoniker": "Sistema.API\\Sistema.API.csproj",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Sistema.API.csproj",
+              "RelativeToolTip": "Sistema.API\\Sistema.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-19T20:00:50.994Z",
               "EditorCaption": ""
             }
           ]
