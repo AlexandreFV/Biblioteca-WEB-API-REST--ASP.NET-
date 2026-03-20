@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\livroscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\livroscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5683B8F3-56D7-4641-B324-0CC73D702D50}|Sistema.Infrastructure\\Sistema.Infrastructure.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.infrastructure\\migrations\\20260320175542_initialbdpostgre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5683B8F3-56D7-4641-B324-0CC73D702D50}|Sistema.Infrastructure\\Sistema.Infrastructure.csproj|solutionrelative:sistema.infrastructure\\migrations\\20260320175542_initialbdpostgre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\sistema.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\sistema.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "20260320175542_InitialBDPostgre.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure\\Migrations\\20260320175542_InitialBDPostgre.cs",
-              "RelativeDocumentMoniker": "Sistema.Infrastructure\\Migrations\\20260320175542_InitialBDPostgre.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure\\Migrations\\20260320175542_InitialBDPostgre.cs",
-              "RelativeToolTip": "Sistema.Infrastructure\\Migrations\\20260320175542_InitialBDPostgre.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T17:55:47.428Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Program.cs",
               "RelativeDocumentMoniker": "Sistema.API\\Program.cs",
               "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Program.cs",
               "RelativeToolTip": "Sistema.API\\Program.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAkwIMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-19T21:27:03.703Z",
+              "WhenOpened": "2026-03-20T22:29:23.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "Sistema.API\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T22:30:19.986Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Sistema.Application.csproj",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
-              "RelativeDocumentMoniker": "Sistema.Application\\Sistema.Application.csproj",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
-              "RelativeToolTip": "Sistema.Application\\Sistema.Application.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-19T21:27:00.398Z",
+              "Title": "SolicitacaoController.cs",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\SolicitacaoController.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\SolicitacaoController.cs",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\SolicitacaoController.cs",
+              "RelativeToolTip": "Sistema.API\\Controllers\\SolicitacaoController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T22:30:16.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LivrosController.cs",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\LivrosController.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\LivrosController.cs",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\LivrosController.cs",
+              "RelativeToolTip": "Sistema.API\\Controllers\\LivrosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T22:30:13.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoriasController.cs",
+              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\CategoriasController.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\CategoriasController.cs",
+              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\CategoriasController.cs",
+              "RelativeToolTip": "Sistema.API\\Controllers\\CategoriasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T22:29:48.596Z",
               "EditorCaption": ""
             }
           ]

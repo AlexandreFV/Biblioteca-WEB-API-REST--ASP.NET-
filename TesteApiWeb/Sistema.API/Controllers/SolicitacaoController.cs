@@ -1,6 +1,7 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.SolicitacaoEmprestimo.SolicitacaoEmprestimoDTO;
 
@@ -10,6 +11,7 @@ namespace BibliotecaWebApiRest.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
+    [EnableRateLimiting("porUsuario")]
     public class SolicitacaoController : ControllerPersonalizado
     {
         private readonly ISolicitacaoService _solicitacaoService;

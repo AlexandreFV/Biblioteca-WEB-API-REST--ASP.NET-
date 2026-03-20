@@ -1,6 +1,7 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.Auth.AuthDTO;
 
@@ -8,6 +9,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableRateLimiting("limiteRequestRegisterLogin")]
     public class AuthController : ControllerPersonalizado
     {
 

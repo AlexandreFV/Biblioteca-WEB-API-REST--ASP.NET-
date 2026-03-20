@@ -1,6 +1,7 @@
 ﻿using Biblioteca_WEB_API_REST_ASP;
 using Biblioteca_WEB_API_REST_ASP.Class;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using TesteApiWeb.Services;
 using static DTOS.Usuario.UsuarioDTO;
 
@@ -8,6 +9,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableRateLimiting("porUsuario")]
     public class UsuariosController : ControllerPersonalizado
     {
 

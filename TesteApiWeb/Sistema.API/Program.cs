@@ -1,11 +1,14 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Biblioteca_WEB_API_REST_ASP.Context;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Sistema.API.Middlewares;
 using Sistema.Application.Configurations;
 using Sistema.Infrastructure.Configurations;
 using System.Reflection;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,6 +68,38 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddPolicy("porUsuario", context =>
+    {
+        var userId = context.User?.FindFirst("sub")?.Value;
+        var ip = context.Connection.RemoteIpAddress?.ToString() ?? "Desconhecido";
+
+        var chave = !string.IsNullOrEmpty(userId) ? $"user:{userId}" : $"ip:{ip}";
+
+        return RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: chave!,
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 10, 
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 2,
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst
+            });
+    });
+
+    options.AddFixedWindowLimiter("limiteRequestRegisterLogin", options =>
+    {
+        options.PermitLimit = 5;
+        options.Window = TimeSpan.FromSeconds(30);
+        options.QueueLimit = 2;
+        options.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
+    });
+
+    options.RejectionStatusCode = 429;
+});
+
 builder.Services
     .AddInfrastructure(builder.Configuration)
     .AddApplication();
@@ -80,6 +115,11 @@ using (var scope = app.Services.CreateScope())
     await Roles.CreateRolesAsync(services);
 }
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor
+});
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -89,6 +129,8 @@ app.UseMiddleware<ExceptionMiddleware>();
 //app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseRateLimiter();
 
 app.MapControllers();
 app.Run();

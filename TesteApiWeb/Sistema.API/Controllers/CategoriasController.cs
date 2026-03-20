@@ -2,6 +2,7 @@
 using Biblioteca_WEB_API_REST_ASP.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.Categoria.CategoriaDTO;
 
@@ -10,6 +11,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Roles = "Admin")]
+    [EnableRateLimiting("porUsuario")]
     public class CategoriasController : ControllerPersonalizado
     {
 

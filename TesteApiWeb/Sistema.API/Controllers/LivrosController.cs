@@ -4,6 +4,7 @@ using Biblioteca_WEB_API_REST_ASP.Models;
 using DTOS.Livro;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Sistema.Application.Interfaces.Services;
 using System.Security.Claims;
 using TesteApiWeb.Services;
@@ -14,6 +15,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [EnableRateLimiting("porUsuario")]
     public class LivrosController : ControllerPersonalizado
     {
 
