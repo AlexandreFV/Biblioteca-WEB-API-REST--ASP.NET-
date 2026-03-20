@@ -10,7 +10,10 @@ namespace Biblioteca_WEB_API_REST_ASP
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDBContextSistema>();
 
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SistemaApiDotNet;Trusted_Connection=True;TrustServerCertificate=True;");
+            // Pega a connection string da variável de ambiente
+            var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+            optionsBuilder.UseNpgsql(connectionString);
 
             return new AppDBContextSistema(optionsBuilder.Options);
         }
