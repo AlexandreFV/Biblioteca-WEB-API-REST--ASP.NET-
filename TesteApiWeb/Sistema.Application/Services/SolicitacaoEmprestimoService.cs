@@ -1,6 +1,7 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Biblioteca_WEB_API_REST_ASP.Models;
 using BibliotecaWebApiRest.Repositories.Interfaces;
+using Sistema.Application.Commoms.Pagination;
 using Sistema.Application.Interfaces;
 using Sistema.Application.Interfaces.Services;
 using Sistema.Application.Services;
@@ -169,7 +170,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
         }
 
 
-        public async Task<ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>> listarAsync()
+        public async Task<ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>> listarAsyncSemPaginacao()
         {
             var solicitacoesBanco = await _repo.ObterTodosPorPermissaoAsync(_currentUser.IsAdmin, _currentUser.IsAdmin, _currentUser.userId);
 
@@ -236,6 +237,11 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
                 ResultType.Atualizado
             );
 
+        }
+
+        public Task<ServiceResult<PagedResult<SolicitacaoEmprestimoDTOResponse>>> listarAsync(PaginationParams pagination)
+        {
+            throw new NotImplementedException();
         }
     }
 }

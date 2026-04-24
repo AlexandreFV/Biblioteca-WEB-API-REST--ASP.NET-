@@ -17,6 +17,8 @@ namespace Biblioteca_WEB_API_REST_ASP.Models
         public int Quantidade { get; set; }
 
         public DateTime DataCriacao { get; set; }
+        public DateTime DataUltimaAtualizacao { get; set; }
+
         public string IdUsuarioAdminCriou { get; set; }
         
         [ForeignKey(nameof(IdUsuarioAdminCriou))]
@@ -32,7 +34,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Models
             if (string.IsNullOrWhiteSpace(nome) || nome.Trim().Length < 3)
                 throw new Exception("Nome deve ter no mínimo 3 caracteres");
 
-            if (string.IsNullOrWhiteSpace(IdUsuarioAdminCriou))
+            if (string.IsNullOrWhiteSpace(idUsuarioAdminCriou))
                 throw new Exception("O Id do usuario Admin é obrigatorio");
 
             if (int.IsNegative(quantidade) || quantidade.Equals(0))
@@ -44,7 +46,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Models
             Categorias = new Collection<Categoria>();
             IdUsuarioAdminCriou = idUsuarioAdminCriou;
             DataCriacao = DateTime.UtcNow;
-
+            DataUltimaAtualizacao = DateTime.UtcNow;
         }
 
     }

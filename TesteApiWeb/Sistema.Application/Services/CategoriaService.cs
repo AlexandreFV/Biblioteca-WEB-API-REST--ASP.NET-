@@ -1,7 +1,11 @@
-﻿using Biblioteca_WEB_API_REST_ASP.Class;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Biblioteca_WEB_API_REST_ASP.Class;
 using Biblioteca_WEB_API_REST_ASP.Models;
 using BibliotecaWebApiRest.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Sistema.Application.Commoms.Pagination;
 using Sistema.Application.Interfaces;
 using Sistema.Application.Interfaces.Services;
 using Sistema.Application.Services;
@@ -14,15 +18,17 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
         private readonly ICategoriaRepository _repo;
         private readonly ICurrentUser _currentUser;
         private readonly ILogger<CategoriaService> _logger;
+        private readonly IMapper _mapper;
 
-        public CategoriaService(ICategoriaRepository repo, ICurrentUser currentUser, ILogger<CategoriaService> logger)
+        public CategoriaService(ICategoriaRepository repo, ICurrentUser currentUser, ILogger<CategoriaService> logger, IMapper mapper)
         {
             _repo = repo;
             _currentUser = currentUser;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public async Task<ServiceResult<IEnumerable<CategoriaResponseDTO>>> listarAsync()
+        public async Task<ServiceResult<PagedResult<CategoriaResponseDTO>>> listarAsync(PaginationParams pagination)
         {
 
             _logger.LogInformation(
@@ -31,15 +37,19 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
                 _currentUser.IsAdmin
             );
 
-            var categorias = await _repo.ObterTodosAsync(_currentUser.IsAdmin);
+            var query = _repo.GetQueryable(_currentUser.IsAdmin);
+
+            var resultado = await query
+                .ProjectTo<CategoriaResponseDTO>(_mapper.ConfigurationProvider)
+                .ToPagedResultAsync(pagination.Page, pagination.PageSize);
 
             _logger.LogInformation(
                 "Categorias retornadas com sucesso para usuário {UserId}",
                 _currentUser.userId
             );
 
-            return ServiceResult<IEnumerable<CategoriaResponseDTO>>.SuccessList(
-                categorias.Select(Mapear),
+            return ServiceResult<PagedResult<CategoriaResponseDTO>>.Success(
+                resultado,
                 "Categorias localizadas com sucesso",
                 ResultType.Sucesso
             );
@@ -77,8 +87,8 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
             );
 
             return ServiceResult<CategoriaResponseDTO>.Success(
-                Mapear(categoria),
-                "Categoria localizada com ID: " + id,
+            _mapper.Map<CategoriaResponseDTO>(categoria),
+            "Categoria localizada com ID: " + id,
                 ResultType.Sucesso
             );
         }
@@ -260,7 +270,10 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
                 id
             );
 
+            _mapper.Map(TDtoEdit, categoriaExiste);
             categoriaExiste.Nome = nomeFormatado;
+            categoriaExiste.DataUltimaAtualizacao = DateTime.UtcNow;
+
             _repo.Atualizar(categoriaExiste);
             await _repo.SalvarAsync();
 
@@ -340,12 +353,12 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
                 nomeFormatado
             );
 
-            var novaCategoria = new Categoria
+            var novaCategoria = new Categoria(nomeFormatado, _currentUser.userId)
             {
-                Nome = nomeFormatado,
+                DataCriacao = DateTime.UtcNow,
+                DataUltimaAtualizacao = DateTime.UtcNow,
                 Ativo = true
             };
-
             await _repo.AdicionarAsync(novaCategoria);
             await _repo.SalvarAsync();
 
@@ -355,21 +368,10 @@ namespace Biblioteca_WEB_API_REST_ASP.Services
             );
 
             return ServiceResult<CategoriaResponseDTO>.Success(
-                Mapear(novaCategoria),
+                _mapper.Map<CategoriaResponseDTO>(novaCategoria),
                 "Categoria adicionada com sucesso",
                 ResultType.Criado
             );
-        }
-
-        private CategoriaResponseDTO Mapear(Categoria c)
-        {
-            var categoriaMapeada = new CategoriaResponseDTO
-            {
-                Id = c.Id,
-                Nome = c.Nome,
-            };
-
-            return categoriaMapeada;
         }
 
     }

@@ -7,6 +7,6 @@ namespace BibliotecaWebApiRest.Repositories.Interfaces
         Task<bool> ExisteLivroComEsseNomeAsync(string livroNome, int? ignorarId = null);
         Task<bool> ExisteSolicitacaoAtivaParaLivroAsync(int idLivro);
         Task<Livro?> ObterLivroIncluindoCategoriaPorId(int idLivro, bool incluirInativos);
-        Task<IEnumerable<Livro>> ObterTodosLivrosIncluindoCategoria(bool incluirInativos);
+        IQueryable<Livro> GetQueryableComCategoria(bool incluirInativos);
     }
 }

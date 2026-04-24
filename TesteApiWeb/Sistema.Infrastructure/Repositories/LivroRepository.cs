@@ -35,14 +35,16 @@ namespace BibliotecaWebApiRest.Repositories.Concretas
             return await query.FirstOrDefaultAsync(l => l.Id == idLivro);
         }
 
-        public async Task<IEnumerable<Livro>> ObterTodosLivrosIncluindoCategoria(bool incluirInativos)
+        public IQueryable<Livro> GetQueryableComCategoria(bool incluirInativos)
         {
-            var query = _context.Livros.Include(c => c.Categorias);
+            var query = _context.Livros
+                .Include(l => l.Categorias)
+                .AsQueryable();
 
             if (!incluirInativos)
-                return await query.Where(l => l.Ativo).ToListAsync();
+                query = query.Where(l => l.Ativo);
 
-            return await query.ToListAsync();
+            return query;
         }
     }
 }

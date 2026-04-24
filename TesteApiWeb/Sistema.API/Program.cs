@@ -20,6 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -103,6 +104,10 @@ builder.Services.AddRateLimiter(options =>
 builder.Services
     .AddInfrastructure(builder.Configuration)
     .AddApplication();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Configuration.AddUserSecrets<Program>();
 
 var app = builder.Build();
 

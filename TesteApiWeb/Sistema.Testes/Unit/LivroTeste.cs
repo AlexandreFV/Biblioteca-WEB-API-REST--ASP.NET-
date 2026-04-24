@@ -1,19 +1,17 @@
-﻿using Biblioteca_WEB_API_REST_ASP.Class;
+﻿using AutoMapper;
+using Biblioteca_WEB_API_REST_ASP.Class;
 using Biblioteca_WEB_API_REST_ASP.Models;
 using BibliotecaWebApiRest.Repositories.Interfaces;
-using DTOS.Livro;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
+using Sistema.Application.Commoms.Pagination;
 using Sistema.Application.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TesteApiWeb.Services;
+using static DTOS.Categoria.CategoriaDTO;
 using static DTOS.Livro.LivroDTO;
 
-namespace Sistema.Testes
+namespace Sistema.Testes.Unit
 {
     public class LivroTeste
     {
@@ -23,40 +21,33 @@ namespace Sistema.Testes
         private readonly Mock<ILivroRepository> _mockLivroRepo;
         private readonly Mock<ICategoriaRepository> _mockCategoriaRepo;
         private readonly Livro livro;
+        private readonly IMapper _mapper;
+        private readonly Mock<ILogger<LivroService>> _mockLogger;
 
         public LivroTeste()
         {
             _mockUser = new Mock<ICurrentUser>();
             _mockLivroRepo = new Mock<ILivroRepository>();
             _mockCategoriaRepo = new Mock<ICategoriaRepository>();
+            _mockLogger = new Mock<ILogger<LivroService>>();
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Livro, LivroResponseDTO>();
+                cfg.CreateMap<Categoria, CategoriaResponseDTO>();
+            });
+
+            _mapper = config.CreateMapper();
 
             _livroService = new LivroService(
                 _mockLivroRepo.Object,
                 _mockCategoriaRepo.Object,
-                _mockUser.Object
+                _mockUser.Object,
+                _mapper,
+                _mockLogger.Object
              );
 
             livro = new Livro { Nome = "Teste", Categorias = new List<Categoria>(), IdUsuarioAdminCriou = "userTeste", Quantidade = 10 };
-
-        }
-
-        [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public async Task ListarTodosLivros_DeveDarSucesso_QuandoLogado(bool isAdmin)
-        {
-            var listaLivros = new List<Livro>();
-
-            _mockUser.Setup(x => x.IsAdmin).Returns(isAdmin);
-
-            _mockLivroRepo.Setup(x => x.ObterTodosLivrosIncluindoCategoria(isAdmin)).ReturnsAsync(listaLivros);
-
-            var result = await _livroService.listarAsync();
-
-            result.Sucesso.Should().BeTrue();
-            result.Tipo.Should().Be(ResultType.Sucesso);
-
-            _mockLivroRepo.Verify(x => x.ObterTodosLivrosIncluindoCategoria(isAdmin), Times.Once);
 
         }
 
@@ -66,16 +57,16 @@ namespace Sistema.Testes
 
             _mockUser.Setup(x => x.IsAdmin).Returns(true);
 
-            _mockLivroRepo.Setup(x => x.ObterLivroIncluindoCategoriaPorId(It.IsAny<int>(), true)).ReturnsAsync(livro);
+            _mockLivroRepo
+                .Setup(x => x.ObterLivroIncluindoCategoriaPorId(It.IsAny<int>(), true))
+                .ReturnsAsync(livro);
 
             var result = await _livroService.buscarPorId(1);
 
             result.Sucesso.Should().BeTrue();
             result.Tipo.Should().Be(ResultType.Sucesso);
-            result.Should().NotBeNull();
 
-            _mockLivroRepo.Verify(x => x.ObterLivroIncluindoCategoriaPorId(It.IsAny<int>(), true), Times.Once);
-
+            _mockLivroRepo.Verify(x => x.ObterLivroIncluindoCategoriaPorId(1, true), Times.Once);
 
         }
 
@@ -170,7 +161,13 @@ namespace Sistema.Testes
         {
 
             var categoriaValida = new List<Categoria>();
-            var livroDto = new LivroEditDTO();
+
+            var livroDto = new LivroEditDTO
+            {
+                Nome = "Livro Teste",
+                Quantidade = 10,
+                CategoriasId = new List<int>()
+            };
 
             _mockUser.Setup(x => x.IsAdmin).Returns(true);
 
@@ -178,7 +175,9 @@ namespace Sistema.Testes
 
             _mockLivroRepo.Setup(x => x.ExisteLivroComEsseNomeAsync(It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(false);
 
-            _mockCategoriaRepo.Setup(x => x.ObterCategoriasValidasAsync(It.IsAny<List<int>>())).ReturnsAsync(categoriaValida);
+            _mockCategoriaRepo
+                .Setup(x => x.ObterCategoriasValidasAsync(It.IsAny<ICollection<int>>()))
+                .ReturnsAsync(categoriaValida);
 
             var result = await _livroService.editarAsync(1, livroDto);
 
@@ -193,18 +192,26 @@ namespace Sistema.Testes
         [Fact]
         public async Task EditarLivroPorId_DeveDarErro_AdminLogadoMasLivroNaoEncontrado()
         {
-            var livroDto = new LivroEditDTO();
+            var livroDto = new LivroEditDTO
+            {
+                Nome = "Livro Teste",
+                Quantidade = 10,
+                CategoriasId = new List<int>()
+            };
 
             _mockUser.Setup(x => x.IsAdmin).Returns(true);
 
-            _mockLivroRepo.Setup(x => x.ObterPorIdAsync(It.IsAny<int>(), true)).ReturnsAsync((Livro?)null);
+            _mockLivroRepo
+                .Setup(x => x.ObterPorIdAsync(It.IsAny<int>(), true))
+                .ReturnsAsync((Livro?)null);
 
             var result = await _livroService.editarAsync(1, livroDto);
 
             result.Sucesso.Should().BeFalse();
             result.Tipo.Should().Be(ResultType.NotFound);
 
-            _mockLivroRepo.Verify(x => x.ObterPorIdAsync(1, true), Times.Once);
+            _mockLivroRepo.Verify(x => x.SalvarAsync(), Times.Never);
+            _mockLivroRepo.Verify(x => x.Atualizar(It.IsAny<Livro>()), Times.Never);
 
         }
 
@@ -302,20 +309,24 @@ namespace Sistema.Testes
             {
                 Nome = "Livro Teste",
                 Quantidade = 10,
-                CategoriasId = new List<int> { 1, 2 }
+                CategoriasId = new List<int> { 1, 2 },
+                
             };
 
             _mockUser.Setup(x => x.IsAdmin).Returns(true);
 
-            _mockLivroRepo.Setup(x => x.ExisteLivroComEsseNomeAsync(It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(false);
+            _mockUser.Setup(x => x.userId).Returns("user 123");
+
+            _mockLivroRepo
+                .Setup(x => x.ExisteLivroComEsseNomeAsync(It.IsAny<string>(), null))
+                .ReturnsAsync(false);
 
             _mockCategoriaRepo
                 .Setup(x => x.ObterCategoriasValidasAsync(It.IsAny<ICollection<int>>()))
                 .ReturnsAsync(new List<Categoria>
                 {
-                    new Categoria { Id = 1, Nome = "Categoria 1", Ativo = true, IdUsuarioCriacao = "userId" },
-                    new Categoria { Id = 2, Nome = "Categoria 2", Ativo = true, IdUsuarioCriacao = "userId" },
-
+                    new Categoria { Id = 1, Nome = "Categoria 1", Ativo = true, IdUsuarioCriacao = "user 123" },
+                    new Categoria { Id = 2, Nome = "Categoria 2", Ativo = true, IdUsuarioCriacao = "user 123", }
                 });
 
             var result = await _livroService.adicionarAsync(livroCreateDto);

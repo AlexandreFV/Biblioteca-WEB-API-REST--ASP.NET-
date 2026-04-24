@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static DTOS.Auth.AuthDTO;
 
-namespace Sistema.Testes
+namespace Sistema.Testes.Unit
 {
     public class AuthTeste
     {

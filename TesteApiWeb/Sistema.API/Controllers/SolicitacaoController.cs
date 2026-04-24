@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using Sistema.Application.Commoms.Pagination;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.SolicitacaoEmprestimo.SolicitacaoEmprestimoDTO;
 
@@ -26,9 +27,13 @@ namespace BibliotecaWebApiRest.Controllers
         /// </summary>
         /// <returns>Solicitacoes filtradas por permissao</returns>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> ObterSolicitacaoAsync() => RespostaCustomizada(await _solicitacaoService.listarAsync());
+        [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status403Forbidden)]
+        /*TODO
+         CORRIGIR POIS A PAGINACAO AINDA N ESTA OCORRENDO NO SERVICE*/
+        public async Task<IActionResult> ObterSolicitacaoAsync([FromQuery] PaginationParams pagination) => RespostaCustomizada(await _solicitacaoService.listarAsync(pagination));
 
 
         /// <summary>

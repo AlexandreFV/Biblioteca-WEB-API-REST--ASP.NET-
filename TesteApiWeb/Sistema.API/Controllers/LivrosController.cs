@@ -5,6 +5,7 @@ using DTOS.Livro;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using Sistema.Application.Commoms.Pagination;
 using Sistema.Application.Interfaces.Services;
 using System.Security.Claims;
 using TesteApiWeb.Services;
@@ -30,7 +31,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<LivroResponseDTO>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> ObterLivrosAsync() => RespostaCustomizada(await _livroService.listarAsync());
+        public async Task<IActionResult> ObterLivrosAsync([FromQuery] PaginationParams pagination) => RespostaCustomizada(await _livroService.listarAsync(pagination));
 
         /// <summary>
         /// Detalhes do livro especificado por Id

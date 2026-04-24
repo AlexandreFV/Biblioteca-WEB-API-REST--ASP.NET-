@@ -14,6 +14,8 @@ namespace Biblioteca_WEB_API_REST_ASP.Models
         public string Nome { get; set; }
 
         public DateTime DataCriacao { get; set; }
+        public DateTime DataUltimaAtualizacao { get; set; }
+
         public string IdUsuarioCriacao { get; set; }
 
         public ICollection<Livro>? Livros { get; set; }
@@ -36,6 +38,8 @@ namespace Biblioteca_WEB_API_REST_ASP.Models
             DataCriacao = DateTime.UtcNow;
             IdUsuarioCriacao = idUsuarioCriacao;
             Livros = new Collection<Livro>();
+            DataUltimaAtualizacao = DateTime.UtcNow;
+
         }
     }
 }

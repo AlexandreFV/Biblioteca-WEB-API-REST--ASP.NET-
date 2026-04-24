@@ -21,7 +21,6 @@ namespace Sistema.Application.Configurations
             services.AddScoped<UsuarioService>();
             services.AddScoped<ILivroService, LivroService>();
             services.AddScoped<IAuthService, AuthService>();
-
             // services.AddScoped<ISolicitacaoEmprestimoService, SolicitacaoEmprestimoService>();
 
             return services;

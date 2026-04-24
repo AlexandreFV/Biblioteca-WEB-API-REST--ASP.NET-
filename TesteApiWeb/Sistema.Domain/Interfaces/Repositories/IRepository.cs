@@ -10,5 +10,6 @@ namespace BibliotecaWebApiRest.Repositories.Interfaces
         void Atualizar(T entity);
         Task SalvarAsync();
         void SoftDelete(T entity);
+        IQueryable<T> GetQueryable(bool incluirInativos);
     }
 }

@@ -1,0 +1,1 @@
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache

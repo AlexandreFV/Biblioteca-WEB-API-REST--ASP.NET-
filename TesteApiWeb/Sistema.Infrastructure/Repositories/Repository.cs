@@ -50,5 +50,14 @@ namespace Sistema.Infrastructure.Repositories
             if (entity is IEntityBase ativa) ativa.Ativo = false;
         }
 
+        public IQueryable<T> GetQueryable(bool incluirInativos)
+        {
+            var query = _context.Set<T>().AsQueryable().AsNoTracking();
+
+            if (!incluirInativos)
+                query = query.Where(e => e.Ativo);
+
+            return query;
+        }
     }
 }

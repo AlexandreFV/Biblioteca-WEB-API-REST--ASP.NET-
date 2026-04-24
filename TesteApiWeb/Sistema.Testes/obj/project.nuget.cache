@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "LStj+F5ndE4=",
+  "dgSpecHash": "MH/2lcK5Lb8=",
   "success": true,
   "projectFilePath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Sistema.Testes.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Alexandre\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Alexandre\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\fluentassertions\\8.8.0\\fluentassertions.8.8.0.nupkg.sha512",
@@ -11,6 +13,7 @@
     "C:\\Users\\Alexandre\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\9.0.13\\microsoft.aspnetcore.cryptography.keyderivation.9.0.13.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\9.0.13\\microsoft.aspnetcore.identity.entityframeworkcore.9.0.13.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\microsoft.codecoverage\\17.12.0\\microsoft.codecoverage.17.12.0.nupkg.sha512",
+    "C:\\Users\\Alexandre\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.13\\microsoft.entityframeworkcore.9.0.13.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.13\\microsoft.entityframeworkcore.abstractions.9.0.13.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.13\\microsoft.entityframeworkcore.analyzers.9.0.13.nupkg.sha512",

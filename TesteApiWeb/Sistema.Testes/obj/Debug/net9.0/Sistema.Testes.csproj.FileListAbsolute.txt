@@ -126,3 +126,5 @@ C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Si
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Testes\obj\Debug\net9.0\Sistema.Testes.pdb
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Testes\obj\Debug\net9.0\Sistema.Testes.genruntimeconfig.cache
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Testes\obj\Debug\net9.0\ref\Sistema.Testes.dll
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Testes\bin\Debug\net9.0\AutoMapper.dll
+C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Testes\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

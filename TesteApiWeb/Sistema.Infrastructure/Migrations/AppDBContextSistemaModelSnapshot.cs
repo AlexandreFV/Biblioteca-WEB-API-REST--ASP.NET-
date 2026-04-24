@@ -36,6 +36,9 @@ namespace Sistema.Infrastructure.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime>("DataUltimaAtualizacao")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("IdUsuarioCriacao")
                         .IsRequired()
                         .HasColumnType("text");
@@ -61,6 +64,9 @@ namespace Sistema.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataUltimaAtualizacao")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("IdUsuarioAdminCriou")
@@ -96,6 +102,9 @@ namespace Sistema.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataSolicitacao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataUltimaAtualizacao")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("IdLivro")

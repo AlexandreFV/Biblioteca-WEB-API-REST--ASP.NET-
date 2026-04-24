@@ -23,10 +23,13 @@ namespace Sistema.Infrastructure.Configurations
             IConfiguration config)
         {
             // 1️⃣ Configura DbContext
-            services.AddDbContext<AppDBContextSistema>(options =>
-                options.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
+            var connectionString =
+                Environment.GetEnvironmentVariable("DATABASE_URL")
+                ?? config.GetConnectionString("DefaultConnection");
 
-            // 2️⃣ Configura Identity
+            services.AddDbContext<AppDBContextSistema>(options =>
+                options.UseNpgsql(connectionString));
+
             services
                 .AddIdentity<Usuario, IdentityRole>(options =>
                 {
@@ -40,8 +43,13 @@ namespace Sistema.Infrastructure.Configurations
                 .AddDefaultTokenProviders();
 
             // 3️⃣ Configura JWT
-            var jwtSecret = config["Jwt:Secret"]
-                ?? throw new Exception("JWT Secret não configurado");
+            var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET");
+
+            if (string.IsNullOrWhiteSpace(jwtSecret))
+                jwtSecret = config["Jwt:Secret"];
+
+            if (string.IsNullOrWhiteSpace(jwtSecret))
+                throw new Exception("JWT Secret não configurado");
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
 
@@ -73,7 +81,6 @@ namespace Sistema.Infrastructure.Configurations
             // 5️⃣ Serviços de aplicação (IdentityService depende do TokenService)
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<ICurrentUser, CurrentUserService>();
-
             // 6️⃣ Repositórios
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ILivroRepository, LivroRepository>();

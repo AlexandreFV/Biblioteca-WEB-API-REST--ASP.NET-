@@ -16,6 +16,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Models
         public string IdUsuarioAdmin { get; set; } = string.Empty;
 
         public DateTime DataSolicitacao { get; set; } = DateTime.UtcNow;
+        public DateTime DataUltimaAtualizacao { get; set; }
 
         public StatusSolicitacao Status { get; set; }
 
