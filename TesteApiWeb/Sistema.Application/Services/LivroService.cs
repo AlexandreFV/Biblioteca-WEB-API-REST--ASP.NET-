@@ -376,12 +376,13 @@ namespace TesteApiWeb.Services
                 nomeFormatado,
                 livroCreateDTO.Quantidade,
                 _currentUser.userId
-            );
-
-            novoLivroEntity.Categorias = categorias;
-            novoLivroEntity.DataCriacao = DateTime.UtcNow;
-            novoLivroEntity.DataUltimaAtualizacao = DateTime.UtcNow;
-            novoLivroEntity.Ativo = true;
+            )
+            {
+                Categorias = categorias,
+                DataCriacao = DateTime.UtcNow,
+                DataUltimaAtualizacao = DateTime.UtcNow,
+                Ativo = true
+            };
 
             await _repo.AdicionarAsync(novoLivroEntity);
             await _repo.SalvarAsync();

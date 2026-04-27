@@ -2,6 +2,7 @@
 using Biblioteca_WEB_API_REST_ASP.Class;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using Sistema.Application.Commoms.Pagination;
 using TesteApiWeb.Services;
 using static DTOS.Usuario.UsuarioDTO;
 

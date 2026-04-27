@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DAXldyJf4Ng=",
+  "dgSpecHash": "tRLUrqhyt3E=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
+  "projectFilePath": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alexandre\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -31,9 +31,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "O pacote 'AutoMapper' 12.0.1 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
-      "projectPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
+      "projectPath": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
+      "filePath": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net9.0"

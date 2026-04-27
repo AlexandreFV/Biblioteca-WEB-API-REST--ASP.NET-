@@ -11,3 +11,16 @@ C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Si
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\refint\Sistema.Domain.dll
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.pdb
 C:\Users\Alexandre\source\repos\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\ref\Sistema.Domain.dll
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\bin\Debug\net9.0\Sistema.Domain.deps.json
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\bin\Debug\net9.0\Sistema.Domain.dll
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\bin\Debug\net9.0\Sistema.Domain.pdb
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.csproj.AssemblyReference.cache
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.AssemblyInfoInputs.cache
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.AssemblyInfo.cs
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.csproj.CoreCompileInputs.cache
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.sourcelink.json
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.dll
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\refint\Sistema.Domain.dll
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\Sistema.Domain.pdb
+D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb\Sistema.Domain\obj\Debug\net9.0\ref\Sistema.Domain.dll

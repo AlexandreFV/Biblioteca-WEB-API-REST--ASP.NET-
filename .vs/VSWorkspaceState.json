@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TesteApiWeb",
+    "\\TesteApiWeb\\Sistema.API\\bin\\Debug\\net9.0",
+    "\\TesteApiWeb\\Sistema.API\\bin\\Release",
+    "\\TesteApiWeb\\Sistema.API\\bin\\Release\\net9.0",
+    "\\TesteApiWeb\\Sistema.API\\Controllers",
+    "\\TesteApiWeb\\Sistema.API\\Controllers\\Base",
+    "\\TesteApiWeb\\Sistema.Application",
+    "\\TesteApiWeb\\Sistema.Application\\Commoms",
+    "\\TesteApiWeb\\Sistema.Application\\Commoms\\Bases"
   ],
-  "SelectedNode": "\\Biblioteca WEB API REST (ASP.NET).slnx",
+  "SelectedNode": "\\TesteApiWeb\\Sistema.API",
   "PreviewInSolutionExplorer": false
 }

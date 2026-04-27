@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MH/2lcK5Lb8=",
+  "dgSpecHash": "VfMJXMNksI0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Sistema.Testes.csproj",
+  "projectFilePath": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Sistema.Testes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alexandre\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Alexandre\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

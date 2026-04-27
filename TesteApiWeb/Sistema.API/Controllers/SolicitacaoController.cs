@@ -31,8 +31,6 @@ namespace BibliotecaWebApiRest.Controllers
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status403Forbidden)]
-        /*TODO
-         CORRIGIR POIS A PAGINACAO AINDA N ESTA OCORRENDO NO SERVICE*/
         public async Task<IActionResult> ObterSolicitacaoAsync([FromQuery] PaginationParams pagination) => RespostaCustomizada(await _solicitacaoService.listarAsync(pagination));
 
 
@@ -45,7 +43,7 @@ namespace BibliotecaWebApiRest.Controllers
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> ObterMinhasSolicitacoesAsync() => RespostaCustomizada(await _solicitacaoService.ListarMinhasSolicitacoesAsync());
+        public async Task<IActionResult> ObterMinhasSolicitacoesAsync([FromQuery] PaginationParams pagination) => RespostaCustomizada(await _solicitacaoService.ListarMinhasSolicitacoesAsync(pagination));
 
         /// <summary>
         /// Detalhes da solicitacao especificado por Id

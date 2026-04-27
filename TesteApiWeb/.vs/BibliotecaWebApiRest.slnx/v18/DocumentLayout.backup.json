@@ -1,18 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\",
+  "WorkspaceRootPath": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.testes\\unit\\livroteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|solutionrelative:sistema.testes\\unit\\livroteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\services\\livroservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\services\\livroservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B5D54E5-BE83-4DF4-B237-14ED4099B9E6}|Sistema.Domain\\Sistema.Domain.csproj|c:\\users\\alexandre\\source\\repos\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.domain\\entities\\livro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B5D54E5-BE83-4DF4-B237-14ED4099B9E6}|Sistema.Domain\\Sistema.Domain.csproj|solutionrelative:sistema.domain\\entities\\livro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Livro.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Domain\\Entities\\Livro.cs",
-              "RelativeDocumentMoniker": "Sistema.Domain\\Entities\\Livro.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Domain\\Entities\\Livro.cs",
-              "RelativeToolTip": "Sistema.Domain\\Entities\\Livro.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAAAC0AAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T19:05:41.274Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LivroService.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\LivroService.cs",
-              "RelativeDocumentMoniker": "Sistema.Application\\Services\\LivroService.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\LivroService.cs",
-              "RelativeToolTip": "Sistema.Application\\Services\\LivroService.cs",
-              "ViewState": "AgIAAGsBAAAAAAAAAAAwwJEBAAAAAAAAAAAAAA==",
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\UsuariosController.cs",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "Sistema.API\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T19:07:11.568Z",
+              "WhenOpened": "2026-04-27T17:45:44.208Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LivroTeste.cs",
-              "DocumentMoniker": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Unit\\LivroTeste.cs",
-              "RelativeDocumentMoniker": "Sistema.Testes\\Unit\\LivroTeste.cs",
-              "ToolTip": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Unit\\LivroTeste.cs",
-              "RelativeToolTip": "Sistema.Testes\\Unit\\LivroTeste.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "Sistema.Application\\Services\\UsuarioService.cs",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\UsuarioService.cs",
+              "RelativeToolTip": "Sistema.Application\\Services\\UsuarioService.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAIwBYAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T18:52:08.142Z",
+              "WhenOpened": "2026-04-27T17:45:52.143Z",
               "EditorCaption": ""
             }
           ]

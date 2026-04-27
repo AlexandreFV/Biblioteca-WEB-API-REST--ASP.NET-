@@ -10,6 +10,8 @@ namespace BibliotecaWebApiRest.Repositories.Interfaces
         Task<SolicitacaoEmprestimo?> ObterSolicitacaoEmprestimoPorId(int idSolicitacao, string userId, bool incluirInativos, bool isAdmin);
 
         Task<IEnumerable<SolicitacaoEmprestimo>> ObterTodasAsMinhasSolicitacoes(string userId);
+        IQueryable<SolicitacaoEmprestimo> GetQueryableComLivroUsuarioParaAdmin();
+        IQueryable<SolicitacaoEmprestimo> GetQueryableComLivroUsuarioParaCliente(string userId);
 
 
     }
