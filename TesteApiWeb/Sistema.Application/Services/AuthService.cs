@@ -1,6 +1,7 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Biblioteca_WEB_API_REST_ASP.Models;
 using Microsoft.Extensions.Logging;
+using Sistema.Application.Interfaces;
 using Sistema.Application.Interfaces.Services;
 using Sistema.Application.Services;
 using static DTOS.Auth.AuthDTO;

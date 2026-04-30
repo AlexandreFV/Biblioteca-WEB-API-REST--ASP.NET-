@@ -9,9 +9,11 @@ namespace DTOS.Auth
         public class LoginDTO
         {
             [Required(ErrorMessage = "É obrigatorio a inserção do e-mail")]
+            [MinLength(1)]
             public string Email { get; set; } = string.Empty;
 
             [Required(ErrorMessage = "É obrigatorio a inserção da senha")]
+            [MinLength(1)]
             public string Senha { get; set; } = string.Empty;
 
         }
@@ -28,12 +30,15 @@ namespace DTOS.Auth
         public class RegisterDTOCreate
         {
             [Required(ErrorMessage = "É obrigatorio a inserção do Nome")]
+            [MinLength(1)]
             public string Nome { get; set; } = string.Empty;
 
             [Required(ErrorMessage = "É obrigatorio a inserção da senha")]
+            [MinLength(1)]
             public string Senha { get; set; } = string.Empty;
 
             [Required(ErrorMessage = "É obrigatorio a inserção do e-mail")]
+            [MinLength(1)]
             public string Email { get; set; } = string.Empty;
            
         }

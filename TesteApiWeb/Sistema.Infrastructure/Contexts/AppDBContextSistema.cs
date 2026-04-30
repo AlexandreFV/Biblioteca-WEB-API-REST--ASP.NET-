@@ -1,7 +1,6 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace Biblioteca_WEB_API_REST_ASP.Context
 {

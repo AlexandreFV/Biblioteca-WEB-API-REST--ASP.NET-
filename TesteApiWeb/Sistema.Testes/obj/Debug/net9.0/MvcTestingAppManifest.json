@@ -1,0 +1,6 @@
+{
+  "Sistema.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API",
+  "Sistema.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application",
+  "Sistema.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Domain",
+  "Sistema.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure"
+}

@@ -95,7 +95,7 @@
             </summary>
             <returns>Solicitacoes filtradas por permissao</returns>
         </member>
-        <member name="M:BibliotecaWebApiRest.Controllers.SolicitacaoController.ObterMinhasSolicitacoesAsync">
+        <member name="M:BibliotecaWebApiRest.Controllers.SolicitacaoController.ObterMinhasSolicitacoesAsync(Sistema.Application.Commoms.Pagination.PaginationParams)">
             <summary>
             Listagem das solicitacoes do usuario logado
             </summary>

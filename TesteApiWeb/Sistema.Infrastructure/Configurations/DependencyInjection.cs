@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Sistema.Application.Interfaces;
 using Sistema.Application.Interfaces.Services;
@@ -20,15 +21,25 @@ namespace Sistema.Infrastructure.Configurations
     {
         public static IServiceCollection AddInfrastructure(
             this IServiceCollection services,
-            IConfiguration config)
+            IConfiguration config,
+            IHostEnvironment env)
         {
-            // 1️⃣ Configura DbContext
-            var connectionString =
-                Environment.GetEnvironmentVariable("DATABASE_URL")
-                ?? config.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<AppDBContextSistema>(options =>
-                options.UseNpgsql(connectionString));
+            if (env.IsEnvironment("Testing"))
+            {
+                services.AddDbContext<AppDBContextSistema>(options =>
+                    options.UseInMemoryDatabase("TestDb"));
+            }
+            else
+            {
+                var connectionString = config.GetConnectionString("DefaultConnection");
+
+                if (string.IsNullOrWhiteSpace(connectionString))
+                    throw new Exception("ConnectionString não configurada");
+
+                services.AddDbContext<AppDBContextSistema>(options =>
+                    options.UseNpgsql(connectionString));
+            }
 
             services
                 .AddIdentity<Usuario, IdentityRole>(options =>
@@ -42,11 +53,13 @@ namespace Sistema.Infrastructure.Configurations
                 .AddEntityFrameworkStores<AppDBContextSistema>()
                 .AddDefaultTokenProviders();
 
-            // 3️⃣ Configura JWT
-            var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET");
-
-            if (string.IsNullOrWhiteSpace(jwtSecret))
-                jwtSecret = config["Jwt:Secret"];
+            // 🔥 JWT SEM EnvironmentVariable
+            var jwtSecret =
+                Environment.GetEnvironmentVariable("JWT_SECRET")
+                ?? config["Jwt:Secret"]
+                ?? (env.IsEnvironment("Testing")
+                    ? "test_secret_key_123456789_123456789"
+                    : null);
 
             if (string.IsNullOrWhiteSpace(jwtSecret))
                 throw new Exception("JWT Secret não configurado");
@@ -75,13 +88,10 @@ namespace Sistema.Infrastructure.Configurations
 
             services.AddHttpContextAccessor();
 
-            // 4️⃣ Serviços técnicos (TokenService precisa ser registrado antes do IdentityService)
             services.AddScoped<TokenService>();
-
-            // 5️⃣ Serviços de aplicação (IdentityService depende do TokenService)
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<ICurrentUser, CurrentUserService>();
-            // 6️⃣ Repositórios
+
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<ISolicitacaoEmprestimoRepository, SolicitacaoEmprestimoRepository>();
