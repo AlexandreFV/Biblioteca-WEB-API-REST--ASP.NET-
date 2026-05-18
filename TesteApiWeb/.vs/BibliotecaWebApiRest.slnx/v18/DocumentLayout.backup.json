@@ -34,8 +34,7 @@
               "RelativeToolTip": "Sistema.Application\\Services\\AuthService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAAwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T20:32:06.912Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-30T20:32:06.912Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "Sistema.Testes\\Integration\\AuthIntegration.cs",
               "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Integration\\AuthIntegration.cs",
               "RelativeToolTip": "Sistema.Testes\\Integration\\AuthIntegration.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAArwJIAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-30T20:26:33.755Z",
               "EditorCaption": ""
@@ -60,8 +59,7 @@
               "RelativeToolTip": "Sistema.API\\Controllers\\AuthController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAA5wBEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T20:36:33.648Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-30T20:36:33.648Z"
             }
           ]
         }

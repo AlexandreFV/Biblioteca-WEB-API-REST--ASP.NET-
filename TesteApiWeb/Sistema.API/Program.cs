@@ -13,9 +13,12 @@ using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration
-    .AddUserSecrets<Program>()
-    .AddEnvironmentVariables();
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -120,17 +123,30 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 var app = builder.Build();
 
 // 🔥 Banco controlado por ambiente
-if (!app.Environment.IsProduction())
+using (var scope = app.Services.CreateScope())
 {
-    using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDBContextSistema>();
 
-    if (app.Environment.IsEnvironment("Testing"))
-        db.Database.EnsureCreated();
-    else
-        db.Database.Migrate();
+    try
+    {
+        if (app.Environment.IsEnvironment("Testing"))
+        {
+            db.Database.EnsureCreated();
+        }
+        else
+        {
+            db.Database.Migrate();
+        }
 
-    await Roles.CreateRolesAsync(scope.ServiceProvider);
+        await Roles.CreateRolesAsync(scope.ServiceProvider);
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider
+            .GetRequiredService<ILogger<Program>>();
+
+        logger.LogError(ex, "Erro ao inicializar banco de dados");
+    }
 }
 
 app.UseForwardedHeaders(new ForwardedHeadersOptions
