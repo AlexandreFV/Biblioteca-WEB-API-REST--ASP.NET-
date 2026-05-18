@@ -33,7 +33,7 @@ namespace Sistema.API.Middlewares
                 var result = new ServiceResult<object>
                 {
                     Sucesso = false,
-                    Mensagem = "Erro interno no servidor",
+                    Mensagem = "Erro interno no servidor" + ex.ToString(),
                     Tipo = ResultType.Erro,
                     Dados = null
                 };

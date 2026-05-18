@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\middlewares\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\middlewares\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.testes\\integration\\authintegration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF3349FB-4990-4BCE-961A-C581243250E9}|Sistema.Testes\\Sistema.Testes.csproj|solutionrelative:sistema.testes\\integration\\authintegration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\services\\livroservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\services\\livroservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\services\\solicitacaoemprestimoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\services\\solicitacaoemprestimoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\livroscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\livroscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,52 +39,80 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Program.cs",
-              "RelativeDocumentMoniker": "Sistema.API\\Program.cs",
-              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Program.cs",
-              "RelativeToolTip": "Sistema.API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Title": "ExceptionMiddleware.cs",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Middlewares\\ExceptionMiddleware.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Middlewares\\ExceptionMiddleware.cs",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Middlewares\\ExceptionMiddleware.cs",
+              "RelativeToolTip": "Sistema.API\\Middlewares\\ExceptionMiddleware.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCMAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-18T02:33:50.505Z",
+              "WhenOpened": "2026-05-18T02:59:48.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LivroService.cs",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\LivroService.cs",
+              "RelativeDocumentMoniker": "Sistema.Application\\Services\\LivroService.cs",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\LivroService.cs",
+              "RelativeToolTip": "Sistema.Application\\Services\\LivroService.cs",
+              "ViewState": "AgIAAHMBAAAAAAAAAAAAwJIBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T02:57:18.25Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "Sistema.Application\\Services\\AuthService.cs",
-              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\AuthService.cs",
-              "RelativeToolTip": "Sistema.Application\\Services\\AuthService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAAwBoAAAAAAAAAAAAAAA==",
+              "Title": "SolicitacaoEmprestimoService.cs",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\SolicitacaoEmprestimoService.cs",
+              "RelativeDocumentMoniker": "Sistema.Application\\Services\\SolicitacaoEmprestimoService.cs",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Services\\SolicitacaoEmprestimoService.cs",
+              "RelativeToolTip": "Sistema.Application\\Services\\SolicitacaoEmprestimoService.cs",
+              "ViewState": "AgIAAI8BAAAAAAAAAAAuwK4BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T20:32:06.912Z"
+              "WhenOpened": "2026-05-18T02:57:07.745Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthIntegration.cs",
-              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Integration\\AuthIntegration.cs",
-              "RelativeDocumentMoniker": "Sistema.Testes\\Integration\\AuthIntegration.cs",
-              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Testes\\Integration\\AuthIntegration.cs",
-              "RelativeToolTip": "Sistema.Testes\\Integration\\AuthIntegration.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAmwHUAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "CategoriasController.cs",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\CategoriasController.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\CategoriasController.cs",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\CategoriasController.cs",
+              "RelativeToolTip": "Sistema.API\\Controllers\\CategoriasController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T20:26:33.755Z",
+              "WhenOpened": "2026-05-18T02:55:54.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LivrosController.cs",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\LivrosController.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\LivrosController.cs",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\LivrosController.cs",
+              "RelativeToolTip": "Sistema.API\\Controllers\\LivrosController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T02:55:43.539Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Sistema.API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAA5wBEAAAAkAAAAAAAAAA==",
+              "Title": "SolicitacaoController.cs",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\SolicitacaoController.cs",
+              "RelativeDocumentMoniker": "Sistema.API\\Controllers\\SolicitacaoController.cs",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Controllers\\SolicitacaoController.cs",
+              "RelativeToolTip": "Sistema.API\\Controllers\\SolicitacaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T20:36:33.648Z"
+              "WhenOpened": "2026-05-18T02:55:23.717Z",
+              "EditorCaption": ""
             }
           ]
         }
