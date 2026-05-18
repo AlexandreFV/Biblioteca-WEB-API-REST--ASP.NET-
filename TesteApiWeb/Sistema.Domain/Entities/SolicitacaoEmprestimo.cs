@@ -13,7 +13,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Models
         public string IdUsuarioCliente { get; set; }
 
         public int IdLivro { get; set; }
-        public string IdUsuarioAdmin { get; set; }
+        public string? IdUsuarioAdmin { get; set; }
 
         public DateTime DataSolicitacao { get; set; }
         public DateTime DataUltimaAtualizacao { get; set; }
@@ -45,7 +45,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Models
                 throw new Exception("É obrigatorio que o id do livro seja maior que 0");
 
             IdUsuarioCliente = idUsuarioCliente;
-            IdUsuarioAdmin = "";
+            IdUsuarioAdmin = null;
             IdLivro = idLivro;
             DataSolicitacao = DateTime.UtcNow;
             DataUltimaAtualizacao = DateTime.UtcNow;
