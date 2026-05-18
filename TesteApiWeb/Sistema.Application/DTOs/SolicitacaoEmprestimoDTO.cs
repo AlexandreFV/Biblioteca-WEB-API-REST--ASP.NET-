@@ -20,7 +20,7 @@ namespace DTOS.SolicitacaoEmprestimo
             public int Id { get; set; }
 
             public string IdUsuarioCliente { get; set; } = string.Empty;
-            public string IdUsuarioAdmin { get; set; } = string.Empty;
+            public string? IdUsuarioAdmin { get; set; }
 
             public int IdLivro { get; set; }
 

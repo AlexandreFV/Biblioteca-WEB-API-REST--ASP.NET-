@@ -3,6 +3,7 @@ using System;
 using Biblioteca_WEB_API_REST_ASP.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Sistema.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDBContextSistema))]
-    partial class AppDBContextSistemaModelSnapshot : ModelSnapshot
+    [Migration("20260518041129_NullableIdUsuarioAdmin")]
+    partial class NullableIdUsuarioAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
