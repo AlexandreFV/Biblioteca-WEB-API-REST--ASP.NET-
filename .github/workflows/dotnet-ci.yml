@@ -27,10 +27,10 @@ jobs:
         dotnet-version: 9.0.x
 
     - name: Restaurar dependências
-      run: dotnet restore
+      run: dotnet restore TesteApiWeb/BibliotecaWebApiRest.slnx
 
     - name: Build da aplicação
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build TesteApiWeb/BibliotecaWebApiRest.slnx --configuration Release --no-restore
 
     - name: Rodar testes
-      run: dotnet test --configuration Release --no-build
+      run: dotnet test TesteApiWeb/BibliotecaWebApiRest.slnx --configuration Release --no-build
