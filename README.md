@@ -7,7 +7,6 @@
 ![xUnit](https://img.shields.io/badge/xUnit-Testing-green)
 ![Swagger](https://img.shields.io/badge/Swagger-API-green)
 ![Clean Architecture](https://img.shields.io/badge/Architecture-Clean-blue)
-![CI](https://github.com/SEUUSER/SEUREPO/actions/workflows/dotnet-ci.yml/badge.svg)
 
 # Biblioteca WEB API REST (ASP.NET)
 
