@@ -1,3 +1,13 @@
+![C#](https://img.shields.io/badge/C%23-.NET-purple)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET-Core-5C2D91)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791)
+![Entity Framework](https://img.shields.io/badge/Entity_Framework-Core-512BD4)
+![JWT](https://img.shields.io/badge/JWT-Authentication-black)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED)
+![xUnit](https://img.shields.io/badge/xUnit-Testing-green)
+![Swagger](https://img.shields.io/badge/Swagger-API-green)
+![Clean Architecture](https://img.shields.io/badge/Architecture-Clean-blue)
+
 # Biblioteca WEB API REST (ASP.NET)
 
 API REST desenvolvida para aprimoramento prático no desenvolvimento backend utilizando ASP.NET Core, aplicando conceitos modernos de arquitetura, autenticação, testes automatizados e boas práticas utilizadas no mercado.
