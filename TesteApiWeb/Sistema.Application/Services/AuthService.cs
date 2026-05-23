@@ -1,14 +1,10 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Biblioteca_WEB_API_REST_ASP.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using Sistema.Application.Commoms.Bases;
 using Sistema.Application.Interfaces;
 using Sistema.Application.Interfaces.Services;
 using Sistema.Application.Services;
-using TesteApiWeb.Services;
 using static DTOS.Auth.AuthDTO;
-using static DTOS.Categoria.CategoriaDTO;
 using static DTOS.Usuario.UsuarioDTO;
 
 namespace Biblioteca_WEB_API_REST_ASP.Services

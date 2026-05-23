@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using System.Threading.Tasks;
+using Biblioteca_WEB_API_REST_ASP.Class;
 
 namespace Sistema.API.Middlewares
 {
@@ -8,32 +8,39 @@ namespace Sistema.API.Middlewares
         private readonly RequestDelegate _reqDele;
         private readonly ILogger<ExceptionMiddleware> _logger;
 
-        public ExceptionMiddleware(RequestDelegate reqDele, ILogger<ExceptionMiddleware> logger) { _reqDele = reqDele; _logger = logger;  }
+        public ExceptionMiddleware(RequestDelegate reqDele, ILogger<ExceptionMiddleware> logger)
+        {
+            _reqDele = reqDele;
+            _logger = logger;
+        }
 
         public async Task Invoke(HttpContext context)
         {
-
             try
             {
                 await _reqDele(context);
             }
             catch (Exception ex)
             {
-
-                _logger.LogError(ex, "Erro não tratado ocorreu. Path: {Path}, Metodo: {Method}", context.Request.Path, context.Request.Method);
+                _logger.LogError(ex,
+                    "Erro não tratado ocorreu. Path: {Path}, Metodo: {Method}",
+                    context.Request.Path,
+                    context.Request.Method);
 
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 context.Response.ContentType = "application/json";
 
-                var result = JsonSerializer.Serialize(
-                    new
-                    {
-                        message = "Erro interno no servidor",
-                    }
-                );
+                var result = new ServiceResult<object>
+                {
+                    Sucesso = false,
+                    Mensagem = "Erro interno no servidor" + ex.ToString(),
+                    Tipo = ResultType.Erro,
+                    Dados = null
+                };
 
-                await context.Response.WriteAsync(result);
+                var json = JsonSerializer.Serialize(result);
 
+                await context.Response.WriteAsync(json);
             }
         }
     }

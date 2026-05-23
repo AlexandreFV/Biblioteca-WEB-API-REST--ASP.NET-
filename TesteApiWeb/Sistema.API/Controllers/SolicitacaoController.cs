@@ -1,6 +1,8 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using Sistema.Application.Commoms.Pagination;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.SolicitacaoEmprestimo.SolicitacaoEmprestimoDTO;
 
@@ -10,6 +12,7 @@ namespace BibliotecaWebApiRest.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
+    [EnableRateLimiting("porUsuario")]
     public class SolicitacaoController : ControllerPersonalizado
     {
         private readonly ISolicitacaoService _solicitacaoService;
@@ -24,9 +27,11 @@ namespace BibliotecaWebApiRest.Controllers
         /// </summary>
         /// <returns>Solicitacoes filtradas por permissao</returns>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> ObterSolicitacaoAsync() => RespostaCustomizada(await _solicitacaoService.listarAsync());
+        [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> ObterSolicitacaoAsync([FromQuery] PaginationParams pagination) => RespostaCustomizada(await _solicitacaoService.listarAsync(pagination));
 
 
         /// <summary>
@@ -38,7 +43,7 @@ namespace BibliotecaWebApiRest.Controllers
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<SolicitacaoEmprestimoDTOResponse>>), StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> ObterMinhasSolicitacoesAsync() => RespostaCustomizada(await _solicitacaoService.ListarMinhasSolicitacoesAsync());
+        public async Task<IActionResult> ObterMinhasSolicitacoesAsync([FromQuery] PaginationParams pagination) => RespostaCustomizada(await _solicitacaoService.ListarMinhasSolicitacoesAsync(pagination));
 
         /// <summary>
         /// Detalhes da solicitacao especificado por Id

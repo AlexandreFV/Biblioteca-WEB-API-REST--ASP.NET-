@@ -1,0 +1,36 @@
+name: .NET CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  backend-ci:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout do código
+      uses: actions/checkout@v4
+
+    - name: Instalar .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Restaurar dependências
+      run: dotnet restore TesteApiWeb/BibliotecaWebApiRest.slnx
+
+    - name: Build da aplicação
+      run: dotnet build TesteApiWeb/BibliotecaWebApiRest.slnx --configuration Release --no-restore
+
+    - name: Rodar testes
+      run: dotnet test TesteApiWeb/BibliotecaWebApiRest.slnx --configuration Release --no-build

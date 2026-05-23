@@ -7,24 +7,19 @@ namespace Biblioteca_WEB_API_REST_ASP.Class
     {
         protected IActionResult RespostaCustomizada<T>(ServiceResult<T> resultado)
         {
-            if (resultado.Sucesso)
-            {
-                return Ok(new
-                {
-                    mensagem = resultado.Mensagem,
-                    dados = resultado.Dados
-                });
-            }
-
             return resultado.Tipo switch
             {
-                ResultType.NotFound => NotFound(new { erro = resultado.Mensagem }),
-                ResultType.Conflito => Conflict(new { erro = resultado.Mensagem }),
-                ResultType.Invalido => BadRequest(new { erro = resultado.Mensagem }),
-                ResultType.Atualizado => Ok( new {mensagem = resultado.Mensagem,dados = resultado.Dados}),
-                ResultType.NaoAutorizado => Unauthorized( new { erro = resultado.Mensagem }),                
-                ResultType.Erro => StatusCode(500, new { erro = resultado.Mensagem }),
-                _ => BadRequest(new { erro = resultado.Mensagem })
+                ResultType.Sucesso => Ok(resultado),
+                ResultType.Criado => Created(string.Empty, resultado),
+                ResultType.Atualizado => Ok(resultado),
+
+                ResultType.NotFound => NotFound(resultado),
+                ResultType.Conflito => Conflict(resultado),
+                ResultType.Invalido => BadRequest(resultado),
+                ResultType.NaoAutorizado => Unauthorized(resultado),
+                ResultType.Erro => StatusCode(500, resultado),
+
+                _ => BadRequest(resultado)
             };
         }
     }

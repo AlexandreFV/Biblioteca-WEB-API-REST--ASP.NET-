@@ -1,12 +1,71 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Alexandre\\source\\repos\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5683B8F3-56D7-4641-B324-0CC73D702D50}|Sistema.Infrastructure\\Sistema.Infrastructure.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.infrastructure\\sistema.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5683B8F3-56D7-4641-B324-0CC73D702D50}|Sistema.Infrastructure\\Sistema.Infrastructure.csproj|solutionrelative:sistema.infrastructure\\sistema.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.api\\sistema.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E288074C-186F-44F5-9A49-3BB616FB78DC}|Sistema.API\\Sistema.API.csproj|solutionrelative:sistema.api\\sistema.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|d:\\projetos git\\biblioteca-web-api-rest--asp.net-\\testeapiweb\\sistema.application\\sistema.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{918DC3E5-7975-4758-A0D0-B3134C8788E4}|Sistema.Application\\Sistema.Application.csproj|solutionrelative:sistema.application\\sistema.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Sistema.Infrastructure",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure\\Sistema.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Sistema.Infrastructure\\Sistema.Infrastructure.csproj",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Infrastructure\\Sistema.Infrastructure.csproj",
+              "RelativeToolTip": "Sistema.Infrastructure\\Sistema.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-23T01:41:13.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Sistema.API",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Sistema.API.csproj",
+              "RelativeDocumentMoniker": "Sistema.API\\Sistema.API.csproj",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.API\\Sistema.API.csproj",
+              "RelativeToolTip": "Sistema.API\\Sistema.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-23T01:41:12.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Sistema.Application",
+              "DocumentMoniker": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
+              "RelativeDocumentMoniker": "Sistema.Application\\Sistema.Application.csproj",
+              "ToolTip": "D:\\Projetos Git\\Biblioteca-WEB-API-REST--ASP.NET-\\TesteApiWeb\\Sistema.Application\\Sistema.Application.csproj",
+              "RelativeToolTip": "Sistema.Application\\Sistema.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-23T01:41:08.482Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

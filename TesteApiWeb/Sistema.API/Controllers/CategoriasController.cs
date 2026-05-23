@@ -2,6 +2,8 @@
 using Biblioteca_WEB_API_REST_ASP.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using Sistema.Application.Commoms.Pagination;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.Categoria.CategoriaDTO;
 
@@ -10,6 +12,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Roles = "Admin")]
+    [EnableRateLimiting("porUsuario")]
     public class CategoriasController : ControllerPersonalizado
     {
 
@@ -25,7 +28,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<CategoriaResponseDTO>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<CategoriaResponseDTO>>), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(ServiceResult<IEnumerable<CategoriaResponseDTO>>), StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> ObterCategoriasAsync() => RespostaCustomizada(await _categoriaService.listarAsync());
+        public async Task<IActionResult> ObterCategoriasAsync([FromQuery] PaginationParams pagination) => RespostaCustomizada(await _categoriaService.listarAsync(pagination));
 
         /// <summary>
         /// Detalhes da categoria especificada por Id

@@ -67,5 +67,30 @@ namespace BibliotecaWebApiRest.Repositories.Concretas
             return await query.ToListAsync();
 
         }
+
+        public IQueryable<SolicitacaoEmprestimo> GetQueryableComLivroUsuarioParaAdmin()
+        {
+            var query = _context.Solicitacoes
+                .Include(l => l.LivroSolicitado)
+                .Include(l => l.UsuarioAdmin)
+                .Include(l => l.UsuarioCliente)
+                .AsQueryable();
+
+            return query;
+        }
+
+        public IQueryable<SolicitacaoEmprestimo> GetQueryableComLivroUsuarioParaCliente(string userId)
+        {
+            var query = _context.Solicitacoes
+                .Include(l => l.LivroSolicitado)
+                .Include(l => l.UsuarioAdmin)
+                .Include(l => l.UsuarioCliente)
+                .Where(l => l.Ativo)
+                .Where(l => l.IdUsuarioCliente == userId)
+                .AsQueryable();
+
+            return query;
+        }
+
     }
 }

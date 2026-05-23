@@ -1,10 +1,15 @@
-﻿using DTOS.Usuario;
+﻿using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Models;
+using Biblioteca_WEB_API_REST_ASP.Services;
+using BibliotecaWebApiRest.Repositories.Interfaces;
+using DTOS.Usuario;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Biblioteca_WEB_API_REST_ASP.Models;
-using static DTOS.Usuario.UsuarioDTO;
+using Microsoft.Extensions.Logging;
 using Sistema.Application.Commoms.Bases;
-using Biblioteca_WEB_API_REST_ASP.Class;
+using Sistema.Application.Commoms.Pagination;
+using Sistema.Application.Interfaces;
+using static DTOS.Usuario.UsuarioDTO;
 
 namespace TesteApiWeb.Services
 {
@@ -13,11 +18,11 @@ namespace TesteApiWeb.Services
 
         private readonly UserManager<Usuario> _userManager;
 
-        public UsuarioService(UserManager<Usuario> userManager) {_userManager = userManager;}
-
+        public UsuarioService(UserManager<Usuario> userManager) {_userManager = userManager; }
 
         public async Task<ServiceResult<IEnumerable<UsuarioDTOResponse>>> ListarUsuariosAsync()
         {
+
             var usuarios = await _userManager.Users.AsNoTracking()
                 .Select(u => new UsuarioDTOResponse
                 {

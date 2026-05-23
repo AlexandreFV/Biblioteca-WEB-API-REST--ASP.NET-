@@ -1,0 +1,6 @@
+services:
+  sistema.api:
+    image: ${DOCKER_REGISTRY-}sistemaapi
+    build:
+      context: .
+      dockerfile: Sistema.API/Dockerfile

@@ -1,6 +1,7 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Sistema.Application.Interfaces.Services;
 using static DTOS.Auth.AuthDTO;
 
@@ -8,6 +9,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableRateLimiting("limiteRequestRegisterLogin")]
     public class AuthController : ControllerPersonalizado
     {
 
@@ -26,6 +28,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
         [AllowAnonymous]
         [HttpPost("login")]
         [ProducesResponseType(typeof(ServiceResult<LoginResponseDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ServiceResult<LoginResponseDTO>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ServiceResult<LoginResponseDTO>), StatusCodes.Status401Unauthorized)]
 
         public async Task<IActionResult> EntrarAsync(LoginDTO loginDto)
@@ -44,6 +47,7 @@ namespace Biblioteca_WEB_API_REST_ASP.Controllers
         [HttpPost("register")]
         [ProducesResponseType(typeof(ServiceResult<RegisterDTOResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ServiceResult<RegisterDTOResponse>), StatusCodes.Status409Conflict)]
+        [ProducesResponseType(typeof(ServiceResult<RegisterDTOResponse>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ServiceResult<RegisterDTOResponse>), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> RegistrarAsync(RegisterDTOCreate registerDTO, bool isAdmin) 
         { 

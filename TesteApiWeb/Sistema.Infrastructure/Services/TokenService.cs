@@ -22,9 +22,16 @@ namespace TesteApiWeb.Services
 
         public async Task<string> GerarToken(Usuario usuario)   
         {
-            var _jwtSecret = _configuration["Jwt:Secret"];
+            var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET");
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret));
+            if (string.IsNullOrWhiteSpace(jwtSecret))
+                jwtSecret = _configuration["Jwt:Secret"];
+
+            if (string.IsNullOrWhiteSpace(jwtSecret))
+                throw new Exception("JWT Secret não configurado");
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
+            
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var roles = await _userManager.GetRolesAsync(usuario);

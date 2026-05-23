@@ -1,0 +1,44 @@
+name: dockercompose17340048984794140743
+services:
+  sistema.api:
+    build:
+      context: D:\Projetos Git\Biblioteca-WEB-API-REST--ASP.NET-\TesteApiWeb
+      dockerfile: Sistema.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ASPNETCORE_HTTPS_PORTS: "8081"
+    image: sistemaapi
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\Alexandre\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind: {}
+      - type: bind
+        source: C:\Users\Alexandre\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind: {}
+      - type: bind
+        source: C:\Users\Alexandre\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind: {}
+      - type: bind
+        source: C:\Users\Alexandre\AppData\Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind: {}
+networks:
+  default:
+    name: dockercompose17340048984794140743_default

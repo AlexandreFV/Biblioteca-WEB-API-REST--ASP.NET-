@@ -1,28 +1,36 @@
 ﻿using Biblioteca_WEB_API_REST_ASP.Class;
+using Biblioteca_WEB_API_REST_ASP.Context;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Sistema.API.Middlewares;
 using Sistema.Application.Configurations;
 using Sistema.Infrastructure.Configurations;
 using System.Reflection;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
+if (builder.Environment.IsDevelopment())
 {
-    options.AddPolicy("AllowAll", p =>
-        p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-});
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddSwaggerGen(c =>
 {
-
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
-    c.IncludeXmlComments(xmlPath);
+    if (File.Exists(xmlPath))
+        c.IncludeXmlComments(xmlPath);
 
     c.SwaggerDoc("v1", new OpenApiInfo
     {
@@ -30,21 +38,13 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 
-
-    // Adiciona o esquema de autenticação Bearer
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
         Type = SecuritySchemeType.Http,
         Scheme = "bearer",
         BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Informe o token JWT (sem a palavra Bearer)",
-        Reference = new OpenApiReference
-        {
-            Type = ReferenceType.SecurityScheme,
-            Id = "Bearer"
-        }
+        In = ParameterLocation.Header
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -63,29 +63,109 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services
-    .AddInfrastructure(builder.Configuration)
-    .AddApplication();
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddPolicy("porUsuario", context =>
+    {
+        var userId = context.User?.FindFirst("sub")?.Value;
+        var ip = context.Connection.RemoteIpAddress?.ToString() ?? "ip";
 
+        var chave = !string.IsNullOrEmpty(userId) ? $"user:{userId}" : $"ip:{ip}";
+
+        return RateLimitPartition.GetFixedWindowLimiter(
+            chave,
+            _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 10,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 2
+            });
+    });
+
+    options.AddFixedWindowLimiter("limiteRequestRegisterLogin", opt =>
+    {
+        opt.PermitLimit = 5;
+        opt.Window = TimeSpan.FromSeconds(30);
+        opt.QueueLimit = 2;
+    });
+
+    options.RejectionStatusCode = 429;
+});
+
+builder.Services.AddInfrastructure(
+    builder.Configuration,
+    builder.Environment
+).AddApplication();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var errors = context.ModelState
+            .Where(x => x.Value?.Errors.Count > 0)
+            .SelectMany(x => x.Value!.Errors)
+            .Select(e => e.ErrorMessage)
+            .ToList();
+
+        var result = new ServiceResult<object>
+        {
+            Sucesso = false,
+            Mensagem = string.Join("; ", errors),
+            Tipo = ResultType.Invalido,
+            Dados = null
+        };
+
+        return new BadRequestObjectResult(result);
+    };
+});
 var app = builder.Build();
 
+// 🔥 Banco controlado por ambiente
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    await Roles.CreateRolesAsync(services);
+    var db = scope.ServiceProvider.GetRequiredService<AppDBContextSistema>();
+
+    try
+    {
+        if (app.Environment.IsEnvironment("Testing"))
+        {
+            db.Database.EnsureCreated();
+        }
+        else
+        {
+            db.Database.Migrate();
+        }
+
+        await Roles.CreateRolesAsync(scope.ServiceProvider);
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider
+            .GetRequiredService<ILogger<Program>>();
+
+        logger.LogError(ex, "Erro ao inicializar banco de dados");
+    }
 }
 
-if (app.Environment.IsDevelopment())
+app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor
+});
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.UseMiddleware<ExceptionMiddleware>();
 
-//app.UseHttpsRedirection();
-app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseRateLimiter();
+
 app.MapControllers();
+
 app.Run();
+
+public partial class Program { }
